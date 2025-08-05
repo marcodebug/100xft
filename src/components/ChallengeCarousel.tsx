@@ -139,7 +139,7 @@ export default function ChallengeCarousel({
         className="overflow-hidden px-4 md:px-8 py-4 challenge-carousel"
       >
         <motion.div
-          className="flex items-stretch cursor-grab active:cursor-grabbing will-change-transform touch-pan-x carousel-container"
+          className="flex items-stretch justify-center cursor-grab active:cursor-grabbing will-change-transform touch-pan-x carousel-container"
           drag="x"
           dragConstraints={constraintsRef}
           dragElastic={0.15}
@@ -147,7 +147,9 @@ export default function ChallengeCarousel({
           onDragStart={() => setIsDragging(true)}
           onDragEnd={handleDragEnd}
           animate={{
-            x: `calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * 1.5}rem)`
+            x: mainPlans.length < itemsPerView 
+              ? 0  // Center when fewer cards than itemsPerView
+              : `calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * 1.5}rem)`
           }}
           transition={{
             type: "spring",
@@ -156,7 +158,9 @@ export default function ChallengeCarousel({
             mass: 0.6
           }}
           style={{
-            width: `calc(${(mainPlans.length / itemsPerView) * 100}% + ${(mainPlans.length - 1) * 1.5}rem)`
+            width: mainPlans.length < itemsPerView 
+              ? 'auto'  // Auto width when centering fewer cards
+              : `calc(${(mainPlans.length / itemsPerView) * 100}% + ${(mainPlans.length - 1) * 1.5}rem)`
           }}
         >
           {mainPlans.map((plan, index) => (
@@ -165,8 +169,8 @@ export default function ChallengeCarousel({
               className="flex-shrink-0 px-2 md:px-3 lg:px-4 carousel-item flex items-stretch"
               style={{ 
                 width: `calc(${100 / itemsPerView}% - ${typeof window !== 'undefined' && window.innerWidth < 640 ? '1rem' : '2rem'})`,
-                minWidth: typeof window !== 'undefined' && window.innerWidth < 640 ? '320px' : '320px',
-                maxWidth: typeof window !== 'undefined' && window.innerWidth < 640 ? '90vw' : '380px'
+                minWidth: typeof window !== 'undefined' && window.innerWidth < 640 ? '340px' : '360px',
+                maxWidth: typeof window !== 'undefined' && window.innerWidth < 640 ? '90vw' : '420px'
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
