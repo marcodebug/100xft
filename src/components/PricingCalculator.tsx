@@ -270,8 +270,8 @@ export default function PricingCalculator() {
               className="w-full max-w-md"
             >
               <PreorderForm
-                initialPlanId={selectedPlanId}
-                initialAccountSize={selectedAccountSize}
+                            defaultPlanId={selectedPlanId}
+            defaultAccountSize={selectedAccountSize}
                 onClose={() => setShowPreorderForm(false)}
               />
             </motion.div>
