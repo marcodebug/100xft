@@ -11,18 +11,19 @@ import ChallengeCard from './ChallengeCard';
 import ChallengeCarousel from './ChallengeCarousel';
 
 export default function PricingCalculator() {
-  const [selectedAccountSize, setSelectedAccountSize] = useState<AccountSize>(25000);
+  const [selectedAccountSize, setSelectedAccountSize] = useState<AccountSize>(20000);
   const [selectedPlanId, setSelectedPlanId] = useState('two-phase-fx');
   const [showPreorderForm, setShowPreorderForm] = useState(false);
   const [comparingPlans, setComparingPlans] = useState<Set<string>>(new Set());
   const [viewMode, setViewMode] = useState<'grid' | 'comparison'>('grid');
-  const [filterType, setFilterType] = useState<'fx' | 'crypto' | 'instant'>('fx');
+  const [filterType, setFilterType] = useState<'fx' | 'crypto' | 'futures'>('fx');
 
-  // Filter plans - Show instant card in both Forex and Crypto categories
+  // Filter plans - Show instant card only in Forex, futures separately
   const filteredPlans = useMemo(() => {
     const fxPlans = plans.filter(p => p.id.includes('fx'));
     const cryptoPlans = plans.filter(p => p.id.includes('crypto'));
     const instantPlan = plans.filter(p => p.id === 'instant');
+    const futuresPlans = plans.filter(p => p.id === 'futures');
     
     switch (filterType) {
       case 'fx':
@@ -31,9 +32,9 @@ export default function PricingCalculator() {
       case 'crypto':
         // Show: One-Phase Crypto, Two-Phase Crypto (2 cards, no Instant)
         return cryptoPlans;
-      case 'instant':
-        // Show only Instant
-        return instantPlan;
+      case 'futures':
+        // Show: Futures (1 card)
+        return futuresPlans;
       default:
         return [...fxPlans, ...instantPlan];
     }
@@ -159,7 +160,8 @@ export default function PricingCalculator() {
               <div className="flex bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl">
                 {[
                   { id: 'fx', name: 'Forex', icon: '💱' },
-                  { id: 'crypto', name: 'Crypto', icon: '₿' }
+                  { id: 'crypto', name: 'Crypto', icon: '₿' },
+                  { id: 'futures', name: 'Futures', icon: '🚀' }
                 ].map((filter) => (
                   <button
                     key={filter.id}

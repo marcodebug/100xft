@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --red-primary: #ef4444;
+  --red-glow: #dc2626;
 }
 
 @theme inline {
@@ -12,15 +14,247 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ef4444;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
+/* Glow effects */
+.red-glow {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.red-text-glow {
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* Button animations */
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Custom range slider styles */
+.slider-thumb {
+  background: linear-gradient(90deg, #374151 0%, #ef4444 50%, #374151 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  transition: background-position 0.3s ease;
+}
+
+.slider-thumb::-webkit-slider-thumb {
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3), 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.slider-thumb::-webkit-slider-thumb:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.4), 0 6px 16px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.slider-thumb::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3), 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.slider-thumb::-moz-range-thumb:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.4), 0 6px 16px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.slider-thumb:focus {
+  outline: none;
+}
+
+.slider-thumb:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.5), 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Carousel optimizations */
+.challenge-carousel {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.challenge-card {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Enhanced mobile carousel experience */
+@media (max-width: 640px) {
+  .challenge-carousel {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .carousel-item {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    flex-shrink: 0;
+  }
+
+  .carousel-container {
+    touch-action: pan-x;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    overscroll-behavior-x: contain;
+    padding: 0 1rem;
+  }
+
+  .challenge-card {
+    max-width: calc(100vw - 2rem);
+    width: 100%;
+    min-height: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .carousel-container {
+    touch-action: pan-x;
+  }
+  
+  .challenge-card {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* Hide scrollbar for hero feature cards mobile swiper */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* 3D Circular Carousel Effect for Why Choose Section */
+.card-stack-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.card-stack-item {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Enhanced card shadows for stacked deck effect */
+.card-stack-shadow {
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 12px 30px rgba(0, 0, 0, 0.15),
+    0 2px 6px rgba(255, 31, 31, 0.1);
+}
+
+.card-stack-shadow-active {
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 30px 60px rgba(0, 0, 0, 0.25),
+    0 5px 15px rgba(255, 31, 31, 0.2),
+    0 0 20px rgba(255, 31, 31, 0.1);
+}
+
+/* Desktop optimizations */
+@media (min-width: 1024px) {
+  .carousel-container {
+    padding: 0;
+  }
+  
+  .challenge-card {
+    max-width: none;
+    width: 100%;
+  }
+  
+  /* When all cards fit, center them properly */
+  .carousel-container.no-scroll {
+    justify-content: center;
+    max-width: 100%;
+  }
+}
+
+/* Challenge Card Alignment */
+.carousel-container {
+  align-items: stretch;
+  touch-action: pan-x pinch-zoom;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.challenge-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.challenge-card > div {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Smooth touch scrolling */
+.carousel-container {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+/* Prevent text selection during drag */
+.carousel-container * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Re-enable text selection for readable content */
+.challenge-card h3,
+.challenge-card p,
+.challenge-card div[class*="text-"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }

@@ -15,14 +15,14 @@ export const plans: Plan[] = [
         leverage: '1:50',
         price: 100
       },
-      25000: {
+      20000: {
         profitTarget: 10,
         dailyLossLimit: 5,
         maxDrawdown: 6,
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 250
+        price: 200
       },
       50000: {
         profitTarget: 10,
@@ -50,6 +50,15 @@ export const plans: Plan[] = [
         profitSplit: 80,
         leverage: '1:50',
         price: 1199
+      },
+      400000: {
+        profitTarget: 10,
+        dailyLossLimit: 5,
+        maxDrawdown: 6,
+        inactivityDays: 30,
+        profitSplit: 80,
+        leverage: '1:50',
+        price: 2399
       }
     }
   },
@@ -67,14 +76,14 @@ export const plans: Plan[] = [
         leverage: '1:50',
         price: 80
       },
-      25000: {
+      20000: {
         profitTarget: 8,
         dailyLossLimit: 5,
         maxDrawdown: 8,
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 200
+        price: 160
       },
       50000: {
         profitTarget: 8,
@@ -102,6 +111,15 @@ export const plans: Plan[] = [
         profitSplit: 80,
         leverage: '1:50',
         price: 999
+      },
+      400000: {
+        profitTarget: 8,
+        dailyLossLimit: 5,
+        maxDrawdown: 8,
+        inactivityDays: 30,
+        profitSplit: 80,
+        leverage: '1:50',
+        price: 1999
       }
     }
   },
@@ -120,7 +138,7 @@ export const plans: Plan[] = [
         dailyCapLimit: 3,
         price: 125
       },
-      25000: {
+      20000: {
         profitTarget: 9,
         dailyLossLimit: 3,
         maxDrawdown: 6,
@@ -128,7 +146,7 @@ export const plans: Plan[] = [
         profitSplit: 90,
         leverage: '5:1 BTC/ETH, 2:1 others',
         dailyCapLimit: 3,
-        price: 313
+        price: 250
       },
       50000: {
         profitTarget: 9,
@@ -159,6 +177,16 @@ export const plans: Plan[] = [
         leverage: '5:1 BTC/ETH, 2:1 others',
         dailyCapLimit: 3,
         price: 1499
+      },
+      400000: {
+        profitTarget: 9,
+        dailyLossLimit: 3,
+        maxDrawdown: 6,
+        inactivityDays: 30,
+        profitSplit: 90,
+        leverage: '5:1 BTC/ETH, 2:1 others',
+        dailyCapLimit: 3,
+        price: 2999
       }
     }
   },
@@ -177,7 +205,7 @@ export const plans: Plan[] = [
         dailyCapLimit: 3,
         price: 99
       },
-      25000: {
+      20000: {
         profitTarget: 6,
         dailyLossLimit: 3,
         maxDrawdown: 9,
@@ -185,7 +213,7 @@ export const plans: Plan[] = [
         profitSplit: 90,
         leverage: '5:1 BTC/ETH, 2:1 others',
         dailyCapLimit: 3,
-        price: 199
+        price: 160
       },
       50000: {
         profitTarget: 6,
@@ -216,6 +244,16 @@ export const plans: Plan[] = [
         leverage: '5:1 BTC/ETH, 2:1 others',
         dailyCapLimit: 3,
         price: 1299
+      },
+      400000: {
+        profitTarget: 6,
+        dailyLossLimit: 3,
+        maxDrawdown: 9,
+        inactivityDays: 30,
+        profitSplit: 90,
+        leverage: '5:1 BTC/ETH, 2:1 others',
+        dailyCapLimit: 3,
+        price: 2599
       }
     }
   },
@@ -232,13 +270,13 @@ export const plans: Plan[] = [
         leverage: '1:50',
         price: 299
       },
-      25000: {
+      20000: {
         dailyLossLimit: 5,
         maxDrawdown: 8,
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 699
+        price: 559
       },
       50000: {
         dailyLossLimit: 5,
@@ -263,12 +301,81 @@ export const plans: Plan[] = [
         profitSplit: 80,
         leverage: '1:50',
         price: 4799
+      },
+      400000: {
+        dailyLossLimit: 5,
+        maxDrawdown: 8,
+        inactivityDays: 30,
+        profitSplit: 80,
+        leverage: '1:50',
+        price: 9599
+      }
+    }
+  },
+  {
+    id: 'futures',
+    label: 'Futures (4-Phase)',
+    steps: ['phase1', 'phase2', 'phase3', 'phase4', 'funded'],
+    rules: {
+      10000: {
+        profitTarget: 9,
+        dailyLossLimit: 5,
+        maxDrawdown: 25,
+        inactivityDays: 14,
+        profitSplit: 90,
+        leverage: '1:15',
+        price: 150
+      },
+      20000: {
+        profitTarget: 9,
+        dailyLossLimit: 5,
+        maxDrawdown: 25,
+        inactivityDays: 14,
+        profitSplit: 90,
+        leverage: '1:15',
+        price: 200
+      },
+      50000: {
+        profitTarget: 9,
+        dailyLossLimit: 5,
+        maxDrawdown: 25,
+        inactivityDays: 14,
+        profitSplit: 90,
+        leverage: '3:30',
+        price: 400
+      },
+      100000: {
+        profitTarget: 9,
+        dailyLossLimit: 5,
+        maxDrawdown: 25,
+        inactivityDays: 14,
+        profitSplit: 90,
+        leverage: '6:60',
+        price: 800
+      },
+      200000: {
+        profitTarget: 9,
+        dailyLossLimit: 5,
+        maxDrawdown: 25,
+        inactivityDays: 14,
+        profitSplit: 90,
+        leverage: '9:90',
+        price: 1600
+      },
+      400000: {
+        profitTarget: 9,
+        dailyLossLimit: 5,
+        maxDrawdown: 25,
+        inactivityDays: 14,
+        profitSplit: 90,
+        leverage: '18:180',
+        price: 3200
       }
     }
   }
 ];
 
-export const accountSizes: AccountSize[] = [10000, 25000, 50000, 100000, 200000];
+export const accountSizes: AccountSize[] = [10000, 20000, 50000, 100000, 200000, 400000];
 
 export const formatAccountSize = (size: AccountSize): string => {
   return `$${(size / 1000)}K`;
