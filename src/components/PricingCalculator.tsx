@@ -200,7 +200,7 @@ export default function PricingCalculator() {
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                       className="bg-gradient-to-r from-brand-600 to-red-600 px-8 py-4 rounded-2xl text-white font-bold text-3xl shadow-lg shadow-brand-500/40 border border-brand-400/20"
                     >
-                      ${formatAccountSize(selectedAccountSize)}
+                      {formatAccountSize(selectedAccountSize)}
                     </motion.div>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ export default function PricingCalculator() {
                   />
                   <div className="flex justify-between text-xs text-gray-400">
                     {accountSizes.map((size) => (
-                      <span key={size} className="font-medium">${formatAccountSize(size)}</span>
+                      <span key={size} className="font-medium">{formatAccountSize(size)}</span>
                     ))}
                   </div>
                 </div>
