@@ -76,7 +76,7 @@ export default function StickyPreorderBar() {
           <div className="max-w-2xl w-full max-h-screen overflow-y-auto">
             <PreorderForm
               defaultPlanId='two-phase-fx'
-              defaultAccountSize={25000}
+              defaultAccountSize={20000}
               onSuccess={() => setShowPreorderForm(false)}
               onClose={() => setShowPreorderForm(false)}
             />

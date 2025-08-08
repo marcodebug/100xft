@@ -14,10 +14,30 @@ export default function EnhancedFooter() {
   ];
 
   const footerLinks = {
-    Company: ['About Us', 'Careers', 'Press', 'Contact'],
-    Trading: ['Challenge Rules', 'Profit Splits', 'Platforms', 'FAQ'],
-    Legal: ['Terms of Service', 'Privacy Policy', 'Risk Disclosure', 'Compliance'],
-    Support: ['Help Center', 'Live Chat', 'Documentation', 'Status']
+    Company: [
+      { name: 'About Us', href: '#' },
+      { name: 'Careers', href: '#' },
+      { name: 'Press', href: '#' },
+      { name: 'Contact', href: 'mailto:support@100xft.com' }
+    ],
+    Trading: [
+      { name: 'Challenge Rules', href: '/rules' },
+      { name: 'Profit Splits', href: '#' },
+      { name: 'Platforms', href: '#' },
+      { name: 'FAQ', href: '/faq' }
+    ],
+    Legal: [
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Risk Disclosure', href: '/risk-disclosure' },
+      { name: 'Compliance', href: '#' }
+    ],
+    Support: [
+      { name: 'Help Center', href: '/faq' },
+      { name: 'Live Chat', href: '#' },
+      { name: 'Documentation', href: '#' },
+      { name: 'Status', href: '#' }
+    ]
   };
 
   return (
@@ -85,11 +105,11 @@ export default function EnhancedFooter() {
                 {links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <motion.a
-                      href="#"
+                      href={link.href}
                       whileHover={{ x: 4 }}
                       className="text-gray-400 hover:text-brand-400 transition-all duration-200 text-xs"
                     >
-                      {link}
+                      {link.name}
                     </motion.a>
                   </li>
                 ))}

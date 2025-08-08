@@ -92,7 +92,7 @@ export default function HeroSection() {
           <div className="max-w-2xl w-full max-h-screen overflow-y-auto">
             <PreorderForm
               defaultPlanId={showDemoForm ? 'two-phase-fx' : 'two-phase-fx'}
-              defaultAccountSize={25000}
+              defaultAccountSize={20000}
               onSuccess={() => {
                 setShowPreorderForm(false);
                 setShowDemoForm(false);

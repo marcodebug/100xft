@@ -12,8 +12,10 @@ import { plans, formatAccountSize, formatPrice } from '@/data/plans';
 const preorderSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   planId: z.enum(['one-phase-fx', 'two-phase-fx', 'crypto-one', 'crypto-two', 'instant', 'futures']),
-  accountSize: z.enum([10000, 20000, 50000, 100000, 200000, 400000] as const),
-  joinDemo: z.boolean().default(false)
+  accountSize: z.number().refine(size => [10000, 20000, 50000, 100000, 200000, 400000].includes(size), {
+    message: 'Invalid account size'
+  }),
+  joinDemo: z.boolean()
 });
 
 type PreorderFormData = z.infer<typeof preorderSchema>;
@@ -52,7 +54,7 @@ export default function PreorderForm({
   const selectedAccountSize = watch('accountSize');
 
   const selectedPlan = plans.find(p => p.id === selectedPlanId);
-  const selectedRule = selectedPlan?.rules[selectedAccountSize];
+  const selectedRule = selectedPlan?.rules[selectedAccountSize as AccountSize];
 
   const onSubmit = async (data: PreorderFormData) => {
     setIsSubmitting(true);

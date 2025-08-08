@@ -32,7 +32,7 @@ export default function AnimatedNumber({
     if (typeof value === 'string') {
       return value;
     }
-    return Math.round(latest);
+    return Math.round(latest).toString();
   });
 
   if (typeof value === 'string') {

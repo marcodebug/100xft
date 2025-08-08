@@ -145,14 +145,14 @@ export default function ChallengeCard({
             <div className="bg-black/30 rounded-lg p-2.5 border border-white/20 backdrop-blur-sm">
               <div className="text-gray-400 text-xs mb-0.5 font-medium">Max Drawdown</div>
               <div className="text-white font-semibold text-sm">
-                <AnimatedNumber value={rule.maxDrawdown} suffix="%" />
+                <AnimatedNumber value={rule.maxDrawdown || 0} suffix="%" />
               </div>
             </div>
             
             <div className="bg-black/30 rounded-lg p-2.5 border border-white/20 backdrop-blur-sm">
               <div className="text-gray-400 text-xs mb-0.5 font-medium">Profit Split</div>
               <div className="text-brand-400 font-semibold text-sm">
-                <AnimatedNumber value={rule.profitSplit} suffix="%" />
+                <AnimatedNumber value={rule.profitSplit || 0} suffix="%" />
               </div>
             </div>
           </div>
