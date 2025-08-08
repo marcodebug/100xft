@@ -77,21 +77,29 @@ export default function SmoothCarousel({
     
     if (maxIndex === 0) return;
     
-    const threshold = 50; // Simple pixel threshold
+    // More conservative thresholds for better mobile experience
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const distanceThreshold = isMobile ? 80 : 100;
+    const velocityThreshold = isMobile ? 800 : 600;
+    
     const velocity = info.velocity.x;
     const offset = info.offset.x;
     
     let newIndex = currentIndex;
     
-    if (Math.abs(velocity) > 300) {
+    // Check for significant gesture (either distance or velocity)
+    const hasSignificantDistance = Math.abs(offset) > distanceThreshold;
+    const hasSignificantVelocity = Math.abs(velocity) > velocityThreshold;
+    
+    if (hasSignificantVelocity) {
       // Fast swipe
       if (velocity > 0 && currentIndex > 0) {
         newIndex = currentIndex - 1;
       } else if (velocity < 0 && currentIndex < maxIndex) {
         newIndex = currentIndex + 1;
       }
-    } else if (Math.abs(offset) > threshold) {
-      // Slow drag
+    } else if (hasSignificantDistance) {
+      // Slow drag with significant distance
       if (offset > 0 && currentIndex > 0) {
         newIndex = currentIndex - 1;
       } else if (offset < 0 && currentIndex < maxIndex) {
@@ -207,8 +215,8 @@ export default function SmoothCarousel({
             left: -(maxIndex * (100 / itemsPerView)) - (maxIndex * (isMobile ? 16 : 24)),
             right: 0
           }}
-          dragElastic={0.05}
-          dragMomentum={false}
+          dragElastic={0.1}
+          dragMomentum={true}
           onDragStart={() => setIsDragging(true)}
           onDragEnd={handleDragEnd}
           animate={{
@@ -216,9 +224,9 @@ export default function SmoothCarousel({
           }}
           transition={{
             type: "spring",
-            stiffness: 400,
-            damping: 40,
-            mass: 1
+            stiffness: typeof window !== 'undefined' && window.innerWidth < 640 ? 200 : 280,
+            damping: typeof window !== 'undefined' && window.innerWidth < 640 ? 30 : 35,
+            mass: typeof window !== 'undefined' && window.innerWidth < 640 ? 0.8 : 0.6
           }}
         >
           {plans.map((plan, index) => (

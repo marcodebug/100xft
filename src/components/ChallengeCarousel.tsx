@@ -28,6 +28,7 @@ export default function ChallengeCarousel({
 }: ChallengeCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [dragStartTime, setDragStartTime] = useState(0);
   const constraintsRef = useRef<HTMLDivElement>(null);
   
   // Use the plans passed as props (filtered from PricingCalculator)
@@ -62,15 +63,35 @@ export default function ChallengeCarousel({
   const maxIndex = Math.max(0, mainPlans.length - itemsPerView);
 
   const handleDragEnd = (event: any, info: PanInfo) => {
-    setIsDragging(false);
-    const threshold = typeof window !== 'undefined' && window.innerWidth < 640 ? 25 : 50; // Lower threshold for mobile
-    const velocity = Math.abs(info.velocity.x);
+    const now = Date.now();
+    const dragDuration = now - dragStartTime;
     
-    // If drag has significant velocity or distance, change slide
-    if ((velocity > 500) || (Math.abs(info.offset.x) > threshold)) {
+    // Prevent multiple rapid swipes (debouncing)
+    if (dragDuration < 150) {
+      setIsDragging(false);
+      return;
+    }
+    
+    setIsDragging(false);
+    
+    // More conservative thresholds to prevent accidental swipes
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const distanceThreshold = isMobile ? 80 : 100; // Increased distance threshold
+    const velocityThreshold = isMobile ? 800 : 600; // Increased velocity threshold
+    
+    const dragDistance = Math.abs(info.offset.x);
+    const dragVelocity = Math.abs(info.velocity.x);
+    
+    // Only change slide if there's significant intent (distance OR velocity, not both)
+    const hasSignificantDistance = dragDistance > distanceThreshold;
+    const hasSignificantVelocity = dragVelocity > velocityThreshold;
+    
+    if (hasSignificantDistance || hasSignificantVelocity) {
       if (info.offset.x > 0 && currentIndex > 0) {
+        // Swipe right - go to previous
         setCurrentIndex(Math.max(0, currentIndex - 1));
       } else if (info.offset.x < 0 && currentIndex < maxIndex) {
+        // Swipe left - go to next  
         setCurrentIndex(Math.min(maxIndex, currentIndex + 1));
       }
     }
@@ -142,9 +163,12 @@ export default function ChallengeCarousel({
           className="flex items-stretch justify-center cursor-grab active:cursor-grabbing will-change-transform touch-pan-x carousel-container"
           drag="x"
           dragConstraints={constraintsRef}
-          dragElastic={0.15}
-          dragMomentum={false}
-          onDragStart={() => setIsDragging(true)}
+          dragElastic={0.1}
+          dragMomentum={true}
+          onDragStart={() => {
+            setIsDragging(true);
+            setDragStartTime(Date.now());
+          }}
           onDragEnd={handleDragEnd}
           animate={{
             x: mainPlans.length < itemsPerView 
@@ -153,9 +177,9 @@ export default function ChallengeCarousel({
           }}
           transition={{
             type: "spring",
-            stiffness: typeof window !== 'undefined' && window.innerWidth < 640 ? 300 : 350,
-            damping: typeof window !== 'undefined' && window.innerWidth < 640 ? 25 : 30,
-            mass: 0.6
+            stiffness: typeof window !== 'undefined' && window.innerWidth < 640 ? 200 : 280,
+            damping: typeof window !== 'undefined' && window.innerWidth < 640 ? 30 : 35,
+            mass: typeof window !== 'undefined' && window.innerWidth < 640 ? 0.8 : 0.6
           }}
           style={{
             width: mainPlans.length < itemsPerView 

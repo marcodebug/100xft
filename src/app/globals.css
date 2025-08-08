@@ -121,12 +121,16 @@ body {
   .challenge-carousel {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    /* Disable momentum scrolling to prevent conflicts with framer-motion */
+    overscroll-behavior-x: contain;
   }
   
   .carousel-item {
     scroll-snap-align: center;
     scroll-snap-stop: always;
     flex-shrink: 0;
+    /* Improve touch responsiveness */
+    touch-action: manipulation;
   }
 
   .carousel-container {
@@ -136,6 +140,9 @@ body {
     user-select: none;
     overscroll-behavior-x: contain;
     padding: 0 1rem;
+    /* Improve GPU acceleration */
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   .challenge-card {
@@ -217,10 +224,18 @@ body {
 /* Challenge Card Alignment */
 .carousel-container {
   align-items: stretch;
-  touch-action: pan-x pinch-zoom;
+  touch-action: pan-x;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  /* Performance optimizations */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Prevent pinch zoom conflicts */
+  -webkit-user-scalable: no;
+  user-scalable: no;
 }
 
 .challenge-card {
