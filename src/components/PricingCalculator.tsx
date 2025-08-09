@@ -62,6 +62,24 @@ export default function PricingCalculator() {
     }
   };
 
+  const startCheckout = async (planId: string) => {
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ planId, accountSize: selectedAccountSize })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || 'Checkout failed');
+      }
+      window.location.href = data.url;
+    } catch (err) {
+      console.error('Stripe checkout failed, showing preorder fallback', err);
+      setShowPreorderForm(true);
+    }
+  };
+
   // Comparison mode view
   if (viewMode === 'comparison' && comparingPlans.size > 0) {
     return (
@@ -241,7 +259,7 @@ export default function PricingCalculator() {
             selectedPlanId={selectedPlanId}
             comparingPlans={comparingPlans}
             onSelect={setSelectedPlanId}
-            onPreorder={() => setShowPreorderForm(true)}
+            onPreorder={(planId) => startCheckout(planId)}
             onCompare={handleCompareToggle}
           />
         </div>
