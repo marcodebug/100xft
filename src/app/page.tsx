@@ -9,6 +9,7 @@ import HowItWorksSection from '@/components/HowItWorksSection';
 // import EarlyAccessSection from '@/components/EarlyAccessSection';
 import EnhancedFooter from '@/components/EnhancedFooter';
 import StickyPreorderBar from '@/components/StickyPreorderBar';
+import LogoMarquee from '@/components/LogoMarquee';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <VortexHeroSection />
       <WhyChooseSection />
       <PricingCalculator />
+      <LogoMarquee />
       {/* <SupportedPlatformsSection /> */}
       <HowItWorksSection />
       <EnhancedFooter />
