@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { z } from 'zod';
-import { plans } from '@/data/plans';
+import { plans, isEarlyAccessActive, earlyAccess } from '@/data/plans';
 import { AccountSize } from '@/types/plan';
 
 export const dynamic = 'force-dynamic';
@@ -45,6 +45,9 @@ export async function POST(req: NextRequest) {
 
     const origin = req.headers.get('origin') ?? new URL(req.url).origin;
 
+    const baseAmount = rule.price;
+    const discountAmount = isEarlyAccessActive() ? Math.round(baseAmount * (1 - earlyAccess.discountPercent / 100)) : baseAmount;
+
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       success_url: `${origin}/?checkout=success`,
@@ -55,7 +58,7 @@ export async function POST(req: NextRequest) {
         {
           price_data: {
             currency: 'usd',
-            unit_amount: Math.round(rule.price * 100),
+            unit_amount: Math.round(discountAmount * 100),
             product_data: {
               name: `${plan.label} — ${accountSize / 1000}K Account`,
               description: '100XFT trading challenge checkout',

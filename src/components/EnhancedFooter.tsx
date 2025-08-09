@@ -44,9 +44,9 @@ export default function EnhancedFooter() {
       {/* Background Beams matching hero */}
       <BackgroundBeams className="opacity-30" />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mb-10">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <motion.div
@@ -64,7 +64,7 @@ export default function EnhancedFooter() {
               </div>
               
               {/* Trust Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm border border-green-500/30 rounded-full text-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm border border-green-500/30 rounded-full text-xs mb-4">
                 <span className="text-lg">🇲🇦</span>
                 <span className="text-green-400 font-medium text-xs">Made in Morocco</span>
                 <span className="text-gray-400">—</span>
@@ -73,7 +73,7 @@ export default function EnhancedFooter() {
               </div>
 
               {/* Social Links */}
-              <div className="flex space-x-4">
+              <div className="flex space-x-3">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}

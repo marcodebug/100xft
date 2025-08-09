@@ -386,3 +386,18 @@ export const formatAccountSize = (size: AccountSize): string => {
 export const formatPrice = (price: number): string => {
   return `$${price.toLocaleString()}`;
 };
+
+// Early Access program configuration
+// Active until official launch in September; applied both in UI and checkout
+export const earlyAccess = {
+  discountPercent: 30, // 30% off
+  endsAtISO: '2025-09-01T00:00:00.000Z',
+};
+
+export const isEarlyAccessActive = (): boolean => {
+  try {
+    return new Date() < new Date(earlyAccess.endsAtISO);
+  } catch {
+    return false;
+  }
+};

@@ -23,7 +23,7 @@ export default function VortexHeroSection() {
             className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-gradient-to-r from-brand-600/20 to-red-600/20 backdrop-blur-sm border border-brand-500/30 rounded-full text-brand-400 text-xs sm:text-sm font-medium max-w-full"
           >
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-            🇲🇦 MOROCCO'S FIRST PROP FIRM
+            EARLY ACCESS • Official Launch September
           </motion.div>
 
           {/* Main Headline */}
@@ -35,20 +35,15 @@ export default function VortexHeroSection() {
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight px-2">
               <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent block">
-                Morocco's First
+                Easiest prop firm challenges to pass!
               </span>
               <span className="bg-gradient-to-r from-brand-400 via-red-400 to-orange-400 bg-clip-text text-transparent block mt-1">
-                Prop Trading Firm — 100XFT
+                100XFT
               </span>
             </h1>
             
             <div className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
-              <span className="block">
-                Proudly built in <span className="text-brand-400 font-semibold">Tangier</span>, empowering traders worldwide
-              </span>
-              <span className="block text-sm sm:text-base md:text-lg text-green-400 mt-2">
-                (yes, <span className="font-semibold">US clients welcome</span> 🇺🇸)
-              </span>
+              Unlock funded accounts with fair rules, rapid payouts, and professional support.
             </div>
           </motion.div>
 
@@ -68,30 +63,18 @@ export default function VortexHeroSection() {
               <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-red-400 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
             </motion.button>
 
-            <motion.button
+            <motion.a
+              href="#pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white font-bold rounded-xl transition-all duration-300 border border-white/20 hover:border-brand-400/50 w-full sm:w-auto text-center text-sm sm:text-base"
             >
-              Preorder Now
-            </motion.button>
+              Get Early Access
+            </motion.a>
           </motion.div>
 
           {/* Trust Ribbon */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-12"
-          >
-            <div className="inline-flex items-center gap-2 sm:gap-4 px-4 py-2 bg-gradient-to-r from-green-600/10 to-blue-600/10 backdrop-blur-sm border border-green-500/20 rounded-full text-xs sm:text-sm max-w-full">
-              <span className="text-lg sm:text-xl">🇲🇦</span>
-              <span className="text-green-400 font-medium">Made in Morocco</span>
-              <span className="text-gray-400 hidden sm:inline">—</span>
-              <span className="text-lg sm:text-xl">🇺🇸</span>
-              <span className="text-blue-400 font-medium">Accepting US Traders</span>
-            </div>
-          </motion.div>
+          {/* Removed locality ribbon for neutral messaging */}
 
                     {/* Key Features */}
           <motion.div

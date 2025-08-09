@@ -4,7 +4,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { plans, accountSizes, futuresAccountSizes, formatAccountSize } from '@/data/plans';
+import { plans, accountSizes, futuresAccountSizes, formatAccountSize, isEarlyAccessActive, earlyAccess } from '@/data/plans';
 import { AccountSize } from '@/types/plan';
 // Removed PreorderForm usage in favor of Stripe Checkout
 import ChallengeCard from './ChallengeCard';
@@ -215,7 +215,12 @@ export default function PricingCalculator() {
             <div className="flex justify-center">
               <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-3xl p-8 min-w-[450px] shadow-2xl hover:border-brand-500/30 transition-all duration-500">
                 <div className="text-center mb-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Account Size</h3>
+                  <h3 className="text-lg font-semibold text-white mb-1">Account Size</h3>
+                  {isEarlyAccessActive() && (
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-green-300 bg-green-700/20 border border-green-500/30 mb-3">
+                      Early Access {earlyAccess.discountPercent}% OFF · Ends Sep 1
+                    </div>
+                  )}
                   <div className="flex items-center justify-center gap-2">
                     <motion.div
                       key={selectedAccountSize}
@@ -263,6 +268,9 @@ export default function PricingCalculator() {
             onPreorder={() => setOrderOpen(true)}
             onCompare={handleCompareToggle}
           />
+          {isEarlyAccessActive() && (
+            <p className="text-center text-sm text-gray-400 mt-4">Early Access discount applied at checkout automatically.</p>
+          )}
         </div>
 
         {/* Enhanced Compare hint */}
