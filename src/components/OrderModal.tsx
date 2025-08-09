@@ -7,7 +7,7 @@ const schema = z.object({
   name: z.string().min(2, 'Enter your full name'),
   email: z.string().email('Enter a valid email'),
   country: z.string().min(2, 'Enter your country'),
-  accept: z.literal(true, { errorMap: () => ({ message: 'Please accept the terms' }) })
+  accept: z.boolean().refine(v => v === true, { message: 'Please accept the terms' })
 });
 
 type FormValues = z.infer<typeof schema>;
