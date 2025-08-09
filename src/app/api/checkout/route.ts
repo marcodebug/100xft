@@ -5,6 +5,7 @@ import { plans } from '@/data/plans';
 import { AccountSize } from '@/types/plan';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
@@ -12,7 +13,8 @@ if (!stripeSecretKey) {
   console.warn('Stripe secret key is not set. Set STRIPE_SECRET_KEY in your environment.');
 }
 
-const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, { apiVersion: '2024-06-20' }) : null as unknown as Stripe;
+// Use SDK's default pinned API version to avoid type mismatches during deploys
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : (null as unknown as Stripe);
 
 const bodySchema = z.object({
   planId: z.enum(['one-phase-fx', 'two-phase-fx', 'crypto-one', 'crypto-two', 'instant', 'futures']),
