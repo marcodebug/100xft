@@ -47,22 +47,7 @@ export default function PricingCalculator() {
     }
   }, [filterType]);
 
-  const handleCompareToggle = (planId: string) => {
-    const newComparing = new Set(comparingPlans);
-    if (newComparing.has(planId)) {
-      newComparing.delete(planId);
-    } else {
-      newComparing.add(planId);
-    }
-    setComparingPlans(newComparing);
-    
-    // Switch to comparison view if we have comparing plans
-    if (newComparing.size > 0) {
-      setViewMode('comparison');
-    } else {
-      setViewMode('grid');
-    }
-  };
+  const handleCompareToggle = () => {};
 
   const startCheckout = async (planId: string) => {
     try {
@@ -82,7 +67,7 @@ export default function PricingCalculator() {
   };
 
   // Comparison mode view
-  if (viewMode === 'comparison' && comparingPlans.size > 0) {
+  if (false) {
     return (
       <section className="relative py-24 overflow-hidden">
         {/* Premium Background matching hero & WhyChoose sections */}
@@ -120,14 +105,12 @@ export default function PricingCalculator() {
                     plan={plan}
                     accountSize={selectedAccountSize}
                     isSelected={selectedPlanId === plan.id}
-                    isComparing={true}
+                    isComparing={false}
                     onSelect={() => setSelectedPlanId(plan.id)}
-                    onPreorder={() => setShowPreorderForm(true)}
-                    onCompare={() => handleCompareToggle(plan.id)}
+                    onPreorder={() => setOrderOpen(true)}
+                    onCompare={() => {}}
                   />
-                  <div className="absolute -top-3 -right-3 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full z-10">
-                    Comparing
-                  </div>
+                  
                 </motion.div>
               );
             })}

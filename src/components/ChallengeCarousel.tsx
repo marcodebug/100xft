@@ -234,7 +234,7 @@ export default function ChallengeCarousel({
                   plan={plan}
                   accountSize={accountSize}
                   isSelected={selectedPlanId === plan.id}
-                  isComparing={comparingPlans.has(plan.id)}
+                  isComparing={false}
                   onSelect={() => onSelect(plan.id)}
                   onPreorder={() => onPreorder(plan.id)}
                   onCompare={() => onCompare(plan.id)}
