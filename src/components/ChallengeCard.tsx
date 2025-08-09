@@ -5,7 +5,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Plan, AccountSize } from '@/types/plan';
-import { formatAccountSize, formatPrice } from '@/data/plans';
+import { formatAccountSize, formatPrice, isEarlyAccessActive, earlyAccess } from '@/data/plans';
 import AnimatedNumber from './AnimatedNumber';
 import ProfitCalculator from './ProfitCalculator';
 
@@ -62,6 +62,10 @@ export default function ChallengeCard({
   };
 
   const stepsBadge = getStepsBadge();
+  const basePrice = rule.price;
+  const discountActive = isEarlyAccessActive();
+  const discountedPrice = discountActive ? Math.round(basePrice * (1 - earlyAccess.discountPercent / 100)) : basePrice;
+  const savings = basePrice - discountedPrice;
 
   return (
     <motion.div
@@ -169,13 +173,26 @@ export default function ChallengeCard({
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-brand-300 text-xs mb-0.5 font-medium">Challenge Price</div>
-                <div className="text-brand-400 text-xl font-bold">
-                  <AnimatedNumber value={formatPrice(rule.price)} />
-                </div>
+                {discountActive ? (
+                  <div className="flex flex-col">
+                    <div className="text-gray-400 line-through text-xs">{formatPrice(basePrice)}</div>
+                    <div className="text-green-400 text-xl font-bold">
+                      <AnimatedNumber value={formatPrice(discountedPrice)} />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-brand-400 text-xl font-bold">
+                    <AnimatedNumber value={formatPrice(basePrice)} />
+                  </div>
+                )}
               </div>
               <div className="text-right">
                 <div className="text-gray-400 text-xs">One-time fee</div>
-                <div className="text-green-400 text-xs font-medium">Refundable*</div>
+                {discountActive ? (
+                  <div className="text-green-400 text-xs font-medium">Save {formatPrice(savings)} ({earlyAccess.discountPercent}%)</div>
+                ) : (
+                  <div className="text-green-400 text-xs font-medium">Refundable*</div>
+                )}
               </div>
             </div>
           </div>
@@ -216,7 +233,7 @@ export default function ChallengeCard({
               whileTap={{ scale: 0.99 }}
               className="w-full px-4 py-2.5 font-bold rounded-lg transition-all duration-300 text-sm bg-gradient-to-r from-green-600 to-emerald-700 text-white border border-green-400/40"
             >
-              Order Now
+              Get Early Access Now
             </motion.button>
           </div>
         </div>

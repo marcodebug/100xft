@@ -69,11 +69,17 @@ export default function OrderModal({ planId, accountSize, open, onClose }: Order
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="w-full max-w-md bg-gray-900 border border-gray-700 rounded-2xl p-6" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-white text-lg font-bold">Order Details</h3>
+          <h3 className="text-white text-lg font-bold">Get Early Access</h3>
           <button onClick={onClose} className="text-gray-400 hover:text-white text-xl">×</button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="bg-black/30 border border-white/10 rounded-xl p-3 text-sm text-gray-300">
+            <div className="flex items-center justify-between">
+              <span>Selected</span>
+              <span className="font-semibold">{planId.replace(/-/g,' ').toUpperCase()} • {(accountSize/1000)}K</span>
+            </div>
+          </div>
           <div>
             <label className="block text-sm text-gray-300 mb-1">Full Name</label>
             <input
@@ -119,9 +125,9 @@ export default function OrderModal({ planId, accountSize, open, onClose }: Order
           <button
             type="submit"
             disabled={submitting}
-            className="w-full px-6 py-3 bg-gradient-to-r from-brand-600 to-red-600 text-white font-bold rounded-lg hover:from-brand-700 hover:to-red-700 transition-all duration-300 disabled:opacity-60"
+            className="w-full px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-700 text-white font-bold rounded-lg hover:from-green-700 hover:to-emerald-800 transition-all duration-300 disabled:opacity-60 border border-green-400/40"
           >
-            {submitting ? 'Redirecting…' : 'Proceed to Order'}
+            {submitting ? 'Redirecting…' : 'Proceed to Checkout'}
           </button>
         </form>
       </div>
