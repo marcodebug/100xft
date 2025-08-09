@@ -20,9 +20,9 @@ const logosRow2: LogoItem[] = [
 
 function Row({ items, reverse = false }: { items: LogoItem[]; reverse?: boolean }) {
   const direction = reverse ? 'reverse' : 'normal';
-  const speed = '28s';
-  const box = 96; // px
-  const gap = 16; // px
+  const speed = '26s';
+  const box = 120; // px
+  const gap = 18; // px
 
   return (
     <div className="overflow-hidden w-full" style={{ maskImage: 'linear-gradient(to right, transparent, black 3rem, black calc(100% - 3rem), transparent)' } as React.CSSProperties}>
@@ -37,11 +37,11 @@ function Row({ items, reverse = false }: { items: LogoItem[]; reverse?: boolean 
         {[...items, ...items].map((item, idx) => (
           <div
             key={`${item.id}-${idx}`}
-            className="flex-shrink-0 flex items-center justify-center rounded-2xl border border-white/10 bg-white/5"
+            className="flex-shrink-0 flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-white/10 transition-colors"
             style={{ width: box, height: box }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.src} alt={item.alt} className="w-10 h-10 opacity-90" />
+            <img src={item.src} alt={item.alt} className="w-12 h-12 opacity-95" />
           </div>
         ))}
       </div>
@@ -63,10 +63,9 @@ export default function LogoMarquee() {
   }, []);
 
   return (
-    <section className="relative py-16">
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-900/10 via-black to-transparent" />
+    <section className="relative py-14 bg-transparent">
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="space-y-4">
+        <div className="space-y-5">
           <Row items={logosRow1} />
           <Row items={logosRow2} reverse />
         </div>
