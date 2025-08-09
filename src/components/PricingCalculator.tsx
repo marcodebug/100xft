@@ -9,6 +9,7 @@ import { AccountSize } from '@/types/plan';
 // Removed PreorderForm usage in favor of Stripe Checkout
 import ChallengeCard from './ChallengeCard';
 import ChallengeCarousel from './ChallengeCarousel';
+import OrderModal from './OrderModal';
 
 export default function PricingCalculator() {
   const [selectedAccountSize, setSelectedAccountSize] = useState<AccountSize>(20000);
@@ -17,6 +18,7 @@ export default function PricingCalculator() {
   const [comparingPlans, setComparingPlans] = useState<Set<string>>(new Set());
   const [viewMode, setViewMode] = useState<'grid' | 'comparison'>('grid');
   const [filterType, setFilterType] = useState<'fx' | 'crypto' | 'futures'>('fx');
+  const [orderOpen, setOrderOpen] = useState(false);
 
   // Ensure selected account size is valid when switching filters (futures has custom sizes)
   useEffect(() => {
@@ -258,7 +260,7 @@ export default function PricingCalculator() {
             selectedPlanId={selectedPlanId}
             comparingPlans={comparingPlans}
             onSelect={setSelectedPlanId}
-            onPreorder={(planId) => startCheckout(planId)}
+            onPreorder={() => setOrderOpen(true)}
             onCompare={handleCompareToggle}
           />
         </div>
@@ -279,7 +281,13 @@ export default function PricingCalculator() {
         )}
       </div>
 
-      {/* Stripe-only: no preorder modal */}
+      {/* Global Order Modal */}
+      <OrderModal
+        open={orderOpen}
+        onClose={() => setOrderOpen(false)}
+        planId={selectedPlanId}
+        accountSize={selectedAccountSize}
+      />
     </section>
   );
 }

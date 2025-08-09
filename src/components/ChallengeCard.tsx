@@ -8,7 +8,6 @@ import { Plan, AccountSize } from '@/types/plan';
 import { formatAccountSize, formatPrice } from '@/data/plans';
 import AnimatedNumber from './AnimatedNumber';
 import ProfitCalculator from './ProfitCalculator';
-import OrderModal from './OrderModal';
 
 interface ChallengeCardProps {
   plan: Plan;
@@ -30,7 +29,6 @@ export default function ChallengeCard({
   onCompare
 }: ChallengeCardProps) {
   const [showCalculator, setShowCalculator] = useState(false);
-  const [showOrder, setShowOrder] = useState(false);
   const rule = plan.rules[accountSize];
   if (!rule) {
     // If the selected size isn't available for this plan (e.g., switching filters),
@@ -212,7 +210,7 @@ export default function ChallengeCard({
             <motion.button
               onClick={(e) => {
                 e.stopPropagation();
-                setShowOrder(true);
+                onPreorder();
               }}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
@@ -221,12 +219,6 @@ export default function ChallengeCard({
               Order Now
             </motion.button>
           </div>
-          <OrderModal
-            open={showOrder}
-            onClose={() => setShowOrder(false)}
-            planId={plan.id}
-            accountSize={accountSize}
-          />
         </div>
 
         {/* Selection indicator */}
