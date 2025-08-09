@@ -4,7 +4,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import PreorderForm from './PreorderForm';
 
 export default function HowItWorksSection() {
   const [showPreorderForm, setShowPreorderForm] = useState(false);
@@ -205,20 +204,17 @@ export default function HowItWorksSection() {
 
               {/* CTA Button */}
               <div className="text-center space-y-4">
-                <motion.button
-                  onClick={() => setShowPreorderForm(true)}
+                <motion.a
+                  href="#pricing"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-brand-600 to-red-600 hover:from-brand-700 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50"
+                  className="w-full inline-block text-center bg-gradient-to-r from-brand-600 to-red-600 hover:from-brand-700 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50"
                 >
-                  Get Started Today
-                </motion.button>
+                  Order Now
+                </motion.a>
                 
                 <p className="text-gray-500 text-sm">
-                  Get{' '}
-                  <span className="text-purple-400 font-semibold">Early Access</span>
-                  <br />
-                  Be among the first to experience the future of prop trading. Limited spots available.
+                  Secure checkout via Stripe
                 </p>
               </div>
             </div>
@@ -226,28 +222,7 @@ export default function HowItWorksSection() {
         </div>
       </div>
 
-      {/* Preorder Form Modal */}
-      {showPreorderForm && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setShowPreorderForm(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md"
-          >
-            <PreorderForm
-              onClose={() => setShowPreorderForm(false)}
-            />
-          </motion.div>
-        </motion.div>
-      )}
+      {/* No preorder modal */}
     </section>
   );
 }

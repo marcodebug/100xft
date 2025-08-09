@@ -188,9 +188,9 @@ export default function NewHeroSection() {
           <button className="px-8 py-4 bg-red-600/80 backdrop-blur-sm border border-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25">
             Join Demo Challenge
           </button>
-          <button className="px-8 py-4 bg-transparent backdrop-blur-sm border border-white/30 hover:border-white/60 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
-            Preorder Now
-          </button>
+          <a href="#pricing" className="px-8 py-4 bg-transparent backdrop-blur-sm border border-white/30 hover:border-white/60 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+            Order Now
+          </a>
         </motion.div>
 
         {/* Launch Info */}

@@ -13,7 +13,7 @@ interface SmoothCarouselProps {
   selectedPlanId: string;
   comparingPlans: Set<string>;
   onSelect: (planId: string) => void;
-  onPreorder: () => void;
+  onPreorder: (planId: string) => void;
   onCompare: (planId: string) => void;
 }
 
@@ -192,7 +192,7 @@ export default function SmoothCarousel({
                   isSelected={selectedPlanId === plan.id}
                   isComparing={comparingPlans.has(plan.id)}
                   onSelect={() => !isDragging && onSelect(plan.id)}
-                  onPreorder={onPreorder}
+                  onPreorder={() => onPreorder(plan.id)}
                   onCompare={() => onCompare(plan.id)}
                 />
               </motion.div>
@@ -250,7 +250,7 @@ export default function SmoothCarousel({
                 isSelected={selectedPlanId === plan.id}
                 isComparing={comparingPlans.has(plan.id)}
                 onSelect={() => !isDragging && onSelect(plan.id)}
-                onPreorder={onPreorder}
+                onPreorder={() => onPreorder(plan.id)}
                 onCompare={() => onCompare(plan.id)}
               />
             </motion.div>

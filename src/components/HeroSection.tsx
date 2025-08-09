@@ -3,7 +3,7 @@
 'use client';
 
 import { useState } from 'react';
-import PreorderForm from './PreorderForm';
+// Preorder removed in favor of Stripe checkout
 
 export default function HeroSection() {
   const [email, setEmail] = useState('');
@@ -70,12 +70,12 @@ export default function HeroSection() {
           >
             Join Demo Challenge
           </button>
-          <button 
-            onClick={() => setShowPreorderForm(true)}
+          <a 
+            href="#pricing"
             className="px-8 py-4 bg-transparent border-2 border-brand-500 text-brand-500 font-bold rounded-lg hover:bg-brand-500 hover:text-white transition-all duration-300 min-w-[200px]"
           >
-            Preorder Now
-          </button>
+            Order Now
+          </a>
         </div>
 
         {/* Launch info */}
@@ -86,25 +86,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Preorder Modal */}
-      {(showPreorderForm || showDemoForm) && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="max-w-2xl w-full max-h-screen overflow-y-auto">
-            <PreorderForm
-              defaultPlanId={showDemoForm ? 'two-phase-fx' : 'two-phase-fx'}
-              defaultAccountSize={20000}
-              onSuccess={() => {
-                setShowPreorderForm(false);
-                setShowDemoForm(false);
-              }}
-              onClose={() => {
-                setShowPreorderForm(false);
-                setShowDemoForm(false);
-              }}
-            />
-          </div>
-        </div>
-      )}
+      {/* No preorder modal in Stripe version */}
     </section>
   );
 }

@@ -6,7 +6,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { plans, accountSizes, futuresAccountSizes, formatAccountSize } from '@/data/plans';
 import { AccountSize } from '@/types/plan';
-import PreorderForm from './PreorderForm';
+// Removed PreorderForm usage in favor of Stripe Checkout
 import ChallengeCard from './ChallengeCard';
 import ChallengeCarousel from './ChallengeCarousel';
 
@@ -75,8 +75,7 @@ export default function PricingCalculator() {
       }
       window.location.href = data.url;
     } catch (err) {
-      console.error('Stripe checkout failed, showing preorder fallback', err);
-      setShowPreorderForm(true);
+      console.error('Stripe checkout failed', err);
     }
   };
 
@@ -280,32 +279,7 @@ export default function PricingCalculator() {
         )}
       </div>
 
-      {/* Preorder Form Modal */}
-      <AnimatePresence>
-        {showPreorderForm && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setShowPreorderForm(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md"
-            >
-              <PreorderForm
-                            defaultPlanId={selectedPlanId}
-            defaultAccountSize={selectedAccountSize}
-                onClose={() => setShowPreorderForm(false)}
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Stripe-only: no preorder modal */}
     </section>
   );
 }

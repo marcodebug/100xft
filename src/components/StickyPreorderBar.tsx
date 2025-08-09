@@ -4,7 +4,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import PreorderForm from './PreorderForm';
 
 export default function StickyPreorderBar() {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,12 +49,12 @@ export default function StickyPreorderBar() {
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <button
-                    onClick={() => setShowPreorderForm(true)}
+                  <a
+                    href="#pricing"
                     className="px-6 py-2 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-bold rounded-lg hover:from-brand-700 hover:to-brand-800 transition-all duration-300 shadow-lg text-sm"
                   >
-                    Secure Spot
-                  </button>
+                    Order Now
+                  </a>
                   <button
                     onClick={() => setIsVisible(false)}
                     className="text-gray-400 hover:text-white transition-colors duration-200 text-xl"
@@ -70,19 +69,7 @@ export default function StickyPreorderBar() {
         )}
       </AnimatePresence>
 
-      {/* Preorder Modal */}
-      {showPreorderForm && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="max-w-2xl w-full max-h-screen overflow-y-auto">
-            <PreorderForm
-              defaultPlanId='two-phase-fx'
-              defaultAccountSize={20000}
-              onSuccess={() => setShowPreorderForm(false)}
-              onClose={() => setShowPreorderForm(false)}
-            />
-          </div>
-        </div>
-      )}
+      {/* Stripe-only: no preorder modal */}
     </>
   );
 }

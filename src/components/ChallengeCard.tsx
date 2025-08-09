@@ -214,13 +214,9 @@ export default function ChallengeCard({
               }}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
-              className={`w-full px-4 py-2.5 font-bold rounded-lg transition-all duration-300 text-sm ${
-                isSelected
-                  ? 'bg-gradient-to-r from-brand-600 to-brand-700 text-white shadow-lg shadow-brand-500/30 hover:shadow-brand-500/40 border border-brand-400/50'
-                  : 'bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:from-brand-600 hover:to-brand-700 border border-gray-600/50 hover:border-brand-400/50'
-              }`}
+              className="w-full px-4 py-2.5 font-bold rounded-lg transition-all duration-300 text-sm bg-gradient-to-r from-green-600 to-emerald-700 text-white border border-green-400/40"
             >
-              {isSelected ? '✓ Selected' : 'Select Challenge'}
+              Order with Stripe
             </motion.button>
           </div>
         </div>

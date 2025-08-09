@@ -3,7 +3,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import PreorderForm from './PreorderForm';
+// Preorder removed in favor of Stripe checkout
 
 export default function EarlyAccessSection() {
   const [email, setEmail] = useState('');
@@ -119,30 +119,18 @@ export default function EarlyAccessSection() {
 
         {/* CTA */}
         <div className="text-center">
-          <button 
-            onClick={() => setShowPreorderForm(true)}
+          <a 
+            href="#pricing"
             className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-lg red-glow hover:from-red-700 hover:to-red-800 btn-glow transition-all duration-300 mr-4"
           >
-            Join Demo Challenge
-          </button>
+            Order Now
+          </a>
           <p className="text-gray-400 text-sm mt-4">
             🚀 Launching Q4 2025 • Limited Early Access Spots Available
           </p>
         </div>
 
-        {/* Preorder Modal */}
-        {showPreorderForm && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <div className="max-w-2xl w-full max-h-screen overflow-y-auto">
-              <PreorderForm
-                defaultPlanId='two-phase-fx'
-                defaultAccountSize={20000}
-                onSuccess={() => setShowPreorderForm(false)}
-                onClose={() => setShowPreorderForm(false)}
-              />
-            </div>
-          </div>
-        )}
+        {/* No preorder modal */}
       </div>
     </section>
   );
