@@ -30,6 +30,7 @@ export default function ChallengeCard({
   onCompare
 }: ChallengeCardProps) {
   const [showCalculator, setShowCalculator] = useState(false);
+  const [showOrder, setShowOrder] = useState(false);
   const rule = plan.rules[accountSize];
   if (!rule) {
     // If the selected size isn't available for this plan (e.g., switching filters),
@@ -63,7 +64,6 @@ export default function ChallengeCard({
   };
 
   const stepsBadge = getStepsBadge();
-  const [showOrder, setShowOrder] = useState(false);
 
   return (
     <motion.div
