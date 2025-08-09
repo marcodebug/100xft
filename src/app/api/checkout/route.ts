@@ -18,13 +18,16 @@ const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : (null as unknown 
 
 const bodySchema = z.object({
   planId: z.enum(['one-phase-fx', 'two-phase-fx', 'crypto-one', 'crypto-two', 'instant', 'futures']),
-  accountSize: z.number()
+  accountSize: z.number(),
+  name: z.string().optional(),
+  email: z.string().email().optional(),
+  country: z.string().optional()
 });
 
 export async function POST(req: NextRequest) {
   try {
     const json = await req.json();
-    const { planId, accountSize } = bodySchema.parse(json);
+    const { planId, accountSize, name, email, country } = bodySchema.parse(json);
 
     const plan = plans.find(p => p.id === planId);
     if (!plan) {
@@ -47,6 +50,7 @@ export async function POST(req: NextRequest) {
       success_url: `${origin}/?checkout=success`,
       cancel_url: `${origin}/?checkout=cancelled`,
       payment_method_types: ['card'],
+      customer_email: email,
       line_items: [
         {
           price_data: {
@@ -63,6 +67,8 @@ export async function POST(req: NextRequest) {
       metadata: {
         planId,
         accountSize: String(accountSize),
+        name: name ?? '',
+        country: country ?? ''
       },
     });
 

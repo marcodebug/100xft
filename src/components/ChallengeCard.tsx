@@ -8,6 +8,7 @@ import { Plan, AccountSize } from '@/types/plan';
 import { formatAccountSize, formatPrice } from '@/data/plans';
 import AnimatedNumber from './AnimatedNumber';
 import ProfitCalculator from './ProfitCalculator';
+import OrderModal from './OrderModal';
 
 interface ChallengeCardProps {
   plan: Plan;
@@ -62,6 +63,7 @@ export default function ChallengeCard({
   };
 
   const stepsBadge = getStepsBadge();
+  const [showOrder, setShowOrder] = useState(false);
 
   return (
     <motion.div
@@ -210,15 +212,21 @@ export default function ChallengeCard({
             <motion.button
               onClick={(e) => {
                 e.stopPropagation();
-                onPreorder();
+                setShowOrder(true);
               }}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               className="w-full px-4 py-2.5 font-bold rounded-lg transition-all duration-300 text-sm bg-gradient-to-r from-green-600 to-emerald-700 text-white border border-green-400/40"
             >
-              Order with Stripe
+              Order Now
             </motion.button>
           </div>
+          <OrderModal
+            open={showOrder}
+            onClose={() => setShowOrder(false)}
+            planId={plan.id}
+            accountSize={accountSize}
+          />
         </div>
 
         {/* Selection indicator */}
