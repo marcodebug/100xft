@@ -53,9 +53,9 @@ export default function StructuredData() {
       "addressCountry": "MA"
     },
     "sameAs": [
-      "https://twitter.com/100xft",
-      "https://discord.gg/100xft",
-      "https://t.me/100xft"
+      "https://x.com/100xft",
+      "https://t.me/I00xclub",
+      "https://www.instagram.com/100xft/"
     ]
   };
 

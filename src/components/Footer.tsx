@@ -13,9 +13,9 @@ export default function Footer() {
       { name: 'Risk Disclaimer', href: '#' }
     ],
     Community: [
-      { name: 'Discord', href: '#' },
-      { name: 'Twitter', href: '#' },
-      { name: 'Telegram', href: '#' }
+      { name: 'Twitter', href: 'https://x.com/100xft' },
+      { name: 'Telegram', href: 'https://t.me/I00xclub' },
+      { name: 'Instagram', href: 'https://www.instagram.com/100xft/' }
     ]
   };
 

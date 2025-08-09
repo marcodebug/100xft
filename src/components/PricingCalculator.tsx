@@ -2,9 +2,9 @@
 
 // NEXT-SPRINT: Stripe + Analytics
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { plans, accountSizes, formatAccountSize } from '@/data/plans';
+import { plans, accountSizes, futuresAccountSizes, formatAccountSize } from '@/data/plans';
 import { AccountSize } from '@/types/plan';
 import PreorderForm from './PreorderForm';
 import ChallengeCard from './ChallengeCard';
@@ -18,7 +18,15 @@ export default function PricingCalculator() {
   const [viewMode, setViewMode] = useState<'grid' | 'comparison'>('grid');
   const [filterType, setFilterType] = useState<'fx' | 'crypto' | 'futures'>('fx');
 
-  // Filter plans - Show instant card only in Forex, futures separately
+  // Ensure selected account size is valid when switching filters (futures has custom sizes)
+  useEffect(() => {
+    const list = filterType === 'futures' ? futuresAccountSizes : accountSizes;
+    if (!list.includes(selectedAccountSize)) {
+      setSelectedAccountSize(list[0] as AccountSize);
+    }
+  }, [filterType]);
+
+  // Filter plans - Show instant card in Forex, also in Crypto and Futures per request
   const filteredPlans = useMemo(() => {
     const fxPlans = plans.filter(p => p.id.includes('fx'));
     const cryptoPlans = plans.filter(p => p.id.includes('crypto'));
@@ -27,14 +35,11 @@ export default function PricingCalculator() {
     
     switch (filterType) {
       case 'fx':
-        // Show: One-Phase FX, Two-Phase FX, Instant (3 cards)
         return [...fxPlans, ...instantPlan];
       case 'crypto':
-        // Show: One-Phase Crypto, Two-Phase Crypto (2 cards, no Instant)
-        return cryptoPlans;
+        return [...cryptoPlans, ...instantPlan];
       case 'futures':
-        // Show: Futures (1 card)
-        return futuresPlans;
+        return [...futuresPlans, ...instantPlan];
       default:
         return [...fxPlans, ...instantPlan];
     }
@@ -209,13 +214,16 @@ export default function PricingCalculator() {
                   <input
                     type="range"
                     min={0}
-                    max={accountSizes.length - 1}
-                    value={accountSizes.indexOf(selectedAccountSize)}
-                    onChange={(e) => setSelectedAccountSize(accountSizes[parseInt(e.target.value)])}
+                    max={(filterType === 'futures' ? futuresAccountSizes : accountSizes).length - 1}
+                    value={(filterType === 'futures' ? futuresAccountSizes : accountSizes).indexOf(selectedAccountSize)}
+                    onChange={(e) => {
+                      const list = filterType === 'futures' ? futuresAccountSizes : accountSizes;
+                      setSelectedAccountSize(list[parseInt(e.target.value)] as AccountSize);
+                    }}
                     className="w-full h-3 bg-gray-800/50 rounded-lg appearance-none cursor-pointer slider-thumb"
                   />
                   <div className="flex justify-between text-xs text-gray-400">
-                    {accountSizes.map((size) => (
+                    {(filterType === 'futures' ? futuresAccountSizes : accountSizes).map((size) => (
                       <span key={size} className="font-medium">{formatAccountSize(size)}</span>
                     ))}
                   </div>

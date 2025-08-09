@@ -45,10 +45,12 @@ export default function ChallengeCarousel({
   };
 
   const [itemsPerView, setItemsPerView] = useState(getItemsPerView);
+  const [isMobile, setIsMobile] = useState<boolean>(typeof window !== 'undefined' ? window.innerWidth < 640 : false);
 
   useEffect(() => {
     const handleResize = () => {
       setItemsPerView(getItemsPerView());
+      setIsMobile(window.innerWidth < 640);
     };
 
     window.addEventListener('resize', handleResize);
@@ -76,17 +78,14 @@ export default function ChallengeCarousel({
     
     // More conservative thresholds to prevent accidental swipes
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
-    const distanceThreshold = isMobile ? 80 : 100; // Increased distance threshold
-    const velocityThreshold = isMobile ? 800 : 600; // Increased velocity threshold
+    const distanceThreshold = isMobile ? 60 : 100; // slightly easier on mobile
+    const velocityThreshold = isMobile ? 600 : 600;
     
     const dragDistance = Math.abs(info.offset.x);
     const dragVelocity = Math.abs(info.velocity.x);
     
-    // Only change slide if there's significant intent (distance OR velocity, not both)
-    const hasSignificantDistance = dragDistance > distanceThreshold;
-    const hasSignificantVelocity = dragVelocity > velocityThreshold;
-    
-    if (hasSignificantDistance || hasSignificantVelocity) {
+    // Change slide when either distance or velocity is significant
+    if (dragDistance > distanceThreshold || dragVelocity > velocityThreshold) {
       if (info.offset.x > 0 && currentIndex > 0) {
         // Swipe right - go to previous
         setCurrentIndex(Math.max(0, currentIndex - 1));
@@ -123,14 +122,44 @@ export default function ChallengeCarousel({
     );
   }
 
+  // Mobile: use native scroll-snap for buttery smooth swipes
+  if (isMobile) {
+    return (
+      <div className="relative">
+        <div className="text-center mb-4">
+          <p className="text-gray-400 text-sm">Swipe to explore challenges</p>
+        </div>
+
+        <div className="overflow-x-auto -mx-4 px-4 py-2 snap-x snap-mandatory scrollbar-thin">
+          <div className="flex gap-3 items-stretch">
+            {mainPlans.map((plan) => (
+              <div key={plan.id} className="snap-center flex-shrink-0 w-[85vw] max-w-[420px]">
+                <ChallengeCard
+                  plan={plan}
+                  accountSize={accountSize}
+                  isSelected={selectedPlanId === plan.id}
+                  isComparing={false}
+                  onSelect={() => onSelect(plan.id)}
+                  onPreorder={onPreorder}
+                  onCompare={() => {}}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop/Tablet: Framer Motion carousel
   return (
     <div className="relative">
       {/* Mobile hint */}
       <div className="md:hidden text-center mb-4">
-        <p className="text-gray-400 text-sm">← Swipe to explore challenges →</p>
+        <p className="text-gray-400 text-sm">Swipe to explore challenges</p>
       </div>
 
-      {/* Navigation arrows - desktop only */}
+      {/* Navigation arrows - desktop/tablet only */}
       {itemsPerView < mainPlans.length && (
         <>
           <motion.button
@@ -160,11 +189,11 @@ export default function ChallengeCarousel({
         className="overflow-hidden px-4 md:px-8 py-4 challenge-carousel"
       >
         <motion.div
-          className="flex items-stretch justify-center cursor-grab active:cursor-grabbing will-change-transform touch-pan-x carousel-container"
+          className="flex items-stretch justify-center will-change-transform carousel-container"
           drag="x"
           dragConstraints={constraintsRef}
-          dragElastic={0.1}
-          dragMomentum={true}
+          dragElastic={0.06}
+          dragMomentum={false}
           onDragStart={() => {
             setIsDragging(true);
             setDragStartTime(Date.now());
@@ -177,9 +206,9 @@ export default function ChallengeCarousel({
           }}
           transition={{
             type: "spring",
-            stiffness: typeof window !== 'undefined' && window.innerWidth < 640 ? 200 : 280,
-            damping: typeof window !== 'undefined' && window.innerWidth < 640 ? 30 : 35,
-            mass: typeof window !== 'undefined' && window.innerWidth < 640 ? 0.8 : 0.6
+            stiffness: 300,
+            damping: 34,
+            mass: 0.6
           }}
           style={{
             width: mainPlans.length < itemsPerView 
@@ -192,9 +221,9 @@ export default function ChallengeCarousel({
               key={plan.id}
               className="flex-shrink-0 px-2 md:px-3 lg:px-4 carousel-item flex items-stretch"
               style={{ 
-                width: `calc(${100 / itemsPerView}% - ${typeof window !== 'undefined' && window.innerWidth < 640 ? '1rem' : '2rem'})`,
-                minWidth: typeof window !== 'undefined' && window.innerWidth < 640 ? '340px' : '360px',
-                maxWidth: typeof window !== 'undefined' && window.innerWidth < 640 ? '90vw' : '420px'
+                width: `calc(${100 / itemsPerView}% - 2rem)`,
+                minWidth: '360px',
+                maxWidth: '420px'
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

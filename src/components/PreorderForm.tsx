@@ -12,7 +12,7 @@ import { plans, formatAccountSize, formatPrice } from '@/data/plans';
 const preorderSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   planId: z.enum(['one-phase-fx', 'two-phase-fx', 'crypto-one', 'crypto-two', 'instant', 'futures']),
-  accountSize: z.number().refine(size => [10000, 20000, 50000, 100000, 200000, 400000].includes(size), {
+  accountSize: z.number().refine(size => [10000, 20000, 25000, 50000, 100000, 150000, 200000, 400000].includes(size), {
     message: 'Invalid account size'
   }),
   joinDemo: z.boolean()

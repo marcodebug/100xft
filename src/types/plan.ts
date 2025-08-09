@@ -1,4 +1,12 @@
-export type AccountSize = 10000 | 20000 | 50000 | 100000 | 200000 | 400000;
+export type AccountSize =
+  | 10000
+  | 20000
+  | 25000
+  | 50000
+  | 100000
+  | 150000
+  | 200000
+  | 400000;
 
 export interface RuleBlock {
   profitTarget?: number;     // %
@@ -15,7 +23,7 @@ export interface Plan {
   id: 'one-phase-fx' | 'two-phase-fx' | 'crypto-one' | 'crypto-two' | 'instant' | 'futures';
   label: string;
   steps: string[];          // e.g. ['assessment', 'funded'] or ['step1','step2','funded']
-  rules: Record<AccountSize, RuleBlock>;
+  rules: Partial<Record<AccountSize, RuleBlock>>;
 }
 
 export interface PreorderData {

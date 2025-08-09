@@ -30,6 +30,11 @@ export default function ChallengeCard({
 }: ChallengeCardProps) {
   const [showCalculator, setShowCalculator] = useState(false);
   const rule = plan.rules[accountSize];
+  if (!rule) {
+    // If the selected size isn't available for this plan (e.g., switching filters),
+    // avoid rendering to prevent runtime errors. Parent will adjust size shortly.
+    return null;
+  }
 
   const formatProfitTarget = () => {
     if (plan.id === 'instant') return 'N/A';
@@ -93,15 +98,17 @@ export default function ChallengeCard({
               </div>
             </div>
             
-            {/* Compare checkbox */}
-            <div className="flex items-center space-x-1">
+            {/* Compare checkbox (desktop only) */}
+            <div className="hidden md:flex items-center space-x-1">
               <input
                 type="checkbox"
                 id={`compare-${plan.id}-${accountSize}`}
                 checked={isComparing}
                 onChange={(e) => {
                   e.stopPropagation();
-                  onCompare();
+                  if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+                    onCompare();
+                  }
                 }}
                 className="w-3.5 h-3.5 text-brand-600 bg-gray-900 border-gray-600 rounded focus:ring-brand-500 focus:ring-2"
               />
@@ -137,7 +144,7 @@ export default function ChallengeCard({
               </div>
               <div className="text-white font-semibold text-sm">
                 <AnimatedNumber 
-                  value={rule.dailyCapLimit ? `±${rule.dailyLossLimit}%` : `${rule.dailyLossLimit}%`} 
+                  value={rule.dailyCapLimit ? `±${rule.dailyCapLimit}%` : `${rule.dailyLossLimit}%`} 
                 />
               </div>
             </div>

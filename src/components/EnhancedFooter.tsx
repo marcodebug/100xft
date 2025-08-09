@@ -7,10 +7,9 @@ import { BackgroundBeams } from './ui/background-beams';
 
 export default function EnhancedFooter() {
   const socialLinks = [
-    { name: 'Discord', href: '#', icon: '💬' },
-    { name: 'Twitter', href: '#', icon: '🐦' },
-    { name: 'Telegram', href: '#', icon: '📱' },
-    { name: 'LinkedIn', href: '#', icon: '💼' }
+    { name: 'Twitter', href: 'https://x.com/100xft', icon: '𝕏' },
+    { name: 'Telegram', href: 'https://t.me/I00xclub', icon: '✈️' },
+    { name: 'Instagram', href: 'https://www.instagram.com/100xft/', icon: '📷' }
   ];
 
   const footerLinks = {

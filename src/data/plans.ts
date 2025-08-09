@@ -262,13 +262,21 @@ export const plans: Plan[] = [
     label: 'Instant Funded',
     steps: ['funded'],
     rules: {
+      25000: {
+        dailyLossLimit: 5,
+        maxDrawdown: 8,
+        inactivityDays: 30,
+        profitSplit: 80,
+        leverage: '1:50',
+        price: 1000
+      },
       10000: {
         dailyLossLimit: 5,
         maxDrawdown: 8,
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 299
+        price: 400
       },
       20000: {
         dailyLossLimit: 5,
@@ -276,7 +284,7 @@ export const plans: Plan[] = [
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 559
+        price: 800
       },
       50000: {
         dailyLossLimit: 5,
@@ -284,7 +292,7 @@ export const plans: Plan[] = [
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 1299
+        price: 2000
       },
       100000: {
         dailyLossLimit: 5,
@@ -292,7 +300,15 @@ export const plans: Plan[] = [
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 2499
+        price: 4000
+      },
+      150000: {
+        dailyLossLimit: 5,
+        maxDrawdown: 8,
+        inactivityDays: 30,
+        profitSplit: 80,
+        leverage: '1:50',
+        price: 6000
       },
       200000: {
         dailyLossLimit: 5,
@@ -300,7 +316,7 @@ export const plans: Plan[] = [
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 4799
+        price: 8000
       },
       400000: {
         dailyLossLimit: 5,
@@ -308,7 +324,7 @@ export const plans: Plan[] = [
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 9599
+        price: 16000
       }
     }
   },
@@ -317,23 +333,14 @@ export const plans: Plan[] = [
     label: 'Futures (4-Phase)',
     steps: ['phase1', 'phase2', 'phase3', 'phase4', 'funded'],
     rules: {
-      10000: {
+      25000: {
         profitTarget: 9,
         dailyLossLimit: 5,
         maxDrawdown: 25,
         inactivityDays: 14,
         profitSplit: 90,
         leverage: '1:15',
-        price: 150
-      },
-      20000: {
-        profitTarget: 9,
-        dailyLossLimit: 5,
-        maxDrawdown: 25,
-        inactivityDays: 14,
-        profitSplit: 90,
-        leverage: '1:15',
-        price: 200
+        price: 313
       },
       50000: {
         profitTarget: 9,
@@ -342,7 +349,7 @@ export const plans: Plan[] = [
         inactivityDays: 14,
         profitSplit: 90,
         leverage: '3:30',
-        price: 400
+        price: 625
       },
       100000: {
         profitTarget: 9,
@@ -351,31 +358,26 @@ export const plans: Plan[] = [
         inactivityDays: 14,
         profitSplit: 90,
         leverage: '6:60',
-        price: 800
+        price: 1250
       },
-      200000: {
+      150000: {
         profitTarget: 9,
         dailyLossLimit: 5,
         maxDrawdown: 25,
         inactivityDays: 14,
         profitSplit: 90,
         leverage: '9:90',
-        price: 1600
-      },
-      400000: {
-        profitTarget: 9,
-        dailyLossLimit: 5,
-        maxDrawdown: 25,
-        inactivityDays: 14,
-        profitSplit: 90,
-        leverage: '18:180',
-        price: 3200
+        price: 1875
       }
     }
   }
 ];
 
+// Default account sizes used for FX and Crypto
 export const accountSizes: AccountSize[] = [10000, 20000, 50000, 100000, 200000, 400000];
+
+// Futures uses a different set per user request
+export const futuresAccountSizes: AccountSize[] = [25000, 50000, 100000, 150000];
 
 export const formatAccountSize = (size: AccountSize): string => {
   return `$${(size / 1000)}K`;

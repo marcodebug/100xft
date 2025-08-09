@@ -97,6 +97,15 @@ const challengeRules = {
 
 const generalRules = [
   {
+    title: "General Trading Rules",
+    items: [
+      "Account Usage: Trade only via the 100XFT platform or approved brokers. Sharing credentials is prohibited.",
+      "Prohibited Strategies: No arbitrage, latency trading, or exploitation of platform errors. Trades must reflect genuine market analysis.",
+      "Market Hours: Trade during standard hours; avoid news events unless specified.",
+      "Communication: Use contact@100xft.com for inquiries; avoid public disclosure of account details."
+    ]
+  },
+  {
     title: "Prohibited Trading Practices",
     items: [
       "High-frequency scalping (< 30 seconds)",
@@ -175,6 +184,16 @@ export default function RulesPage() {
           {/* Challenge-Specific Rules */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white mb-12 text-center">Challenge-Specific Rules</h2>
+
+            {/* Introduction */}
+            <div className="mx-auto max-w-3xl text-gray-300 mb-10 text-center">
+              <p className="leading-relaxed">
+                Welcome to 100XFT Inc., a proprietary trading firm offering evaluation challenges and funded
+                accounts for forex, futures, and crypto markets. These rules ensure fair trading, protect capital,
+                and promote disciplined behavior. Adhere to the following to maintain eligibility for funded
+                accounts and payouts.
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
               {Object.entries(challengeRules).map(([key, challenge]) => (
