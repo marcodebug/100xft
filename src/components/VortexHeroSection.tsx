@@ -12,7 +12,7 @@ export default function VortexHeroSection() {
 
   return (
     <section className="relative min-h-screen overflow-x-hidden bg-neutral-950">
-      <BackgroundBeams />
+      <BackgroundBeams intensity="medium" />
       <div className="relative z-10 flex items-center flex-col justify-center px-6 md:px-8 lg:px-12 py-8 w-full h-full min-h-screen">
         {/* Content Container */}
         <div className="relative z-10 text-center max-w-5xl mx-auto w-full">
@@ -34,9 +34,12 @@ export default function VortexHeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-3 sm:space-y-4"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] sm:leading-[1.12] md:leading-[1.08] px-2">
-              <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent block">
-                Easiest prop firm challenges to pass!
+            <h1 className="px-2">
+              <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
+                Easiest prop firm
+              </span>
+              <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-brand-300 via-red-400 to-orange-300 bg-clip-text text-transparent">
+                challenges to pass
               </span>
             </h1>
             {/* Centered large logo replacing the red 100XFT text */}
@@ -71,7 +74,7 @@ export default function VortexHeroSection() {
             {/* Removed Demo CTA per request */}
 
             <motion.a
-              href="#challenges"
+              href="#pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-700 text-white font-bold rounded-xl transition-all duration-300 border border-green-400/40 hover:from-green-700 hover:to-emerald-800 w-full sm:w-auto text-center text-sm sm:text-base"
