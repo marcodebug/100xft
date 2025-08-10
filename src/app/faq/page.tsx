@@ -154,7 +154,7 @@ export default function FAQPage() {
                 💬 Live Chat
               </a>
               <a
-                href="mailto:support@100xft.com"
+                href="mailto:contact@100xft.com"
                 className="bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
               >
                 📧 Email Support
