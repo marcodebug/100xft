@@ -6,12 +6,14 @@ type LogoItem = { id: number; src: string; alt: string };
 
 // Use the uploaded PNG logos from /public instead of placeholder icons
 // Prefer lightweight SVGs where available for sharper rendering
+// Use only the images provided in /public/logos
 const customLogos: LogoItem[] = [
-  { id: 1, src: '/logos/logo5.svg', alt: 'Logo 1' },
-  { id: 2, src: '/logos/logo6.svg', alt: 'Logo 2' },
-  { id: 3, src: '/logos/logo7.svg', alt: 'Logo 3' },
-  { id: 4, src: '/logos/logo8.svg', alt: 'Logo 4' },
-  { id: 5, src: '/logos/logo9.png', alt: 'Logo 5' },
+  { id: 1, src: '/logos/logo4.png', alt: 'Logo 4' },
+  { id: 2, src: '/logos/logo5.svg', alt: 'Logo 5' },
+  { id: 3, src: '/logos/logo6.svg', alt: 'Logo 6' },
+  { id: 4, src: '/logos/logo7.svg', alt: 'Logo 7' },
+  { id: 5, src: '/logos/logo8.svg', alt: 'Logo 8' },
+  { id: 6, src: '/logos/tradingview.svg', alt: 'TradingView' },
 ];
 
 // Create two rows from the same set in different orders for variety
