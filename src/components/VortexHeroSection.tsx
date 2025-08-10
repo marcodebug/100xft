@@ -134,7 +134,10 @@ export default function VortexHeroSection() {
                 </div>
               </div>
               
-            {/* Mobile swipe hint removed per request */}
+              {/* Mobile swipe hint */}
+              <div className="text-center mt-4">
+                <p className="text-gray-500 text-xs">← Swipe to explore features →</p>
+              </div>
             </div>
 
             {/* Desktop: Grid Layout */}
