@@ -6,10 +6,10 @@ type LogoItem = { id: number; src: string; alt: string };
 
 // Use the uploaded PNG logos from /public instead of placeholder icons
 const customLogos: LogoItem[] = [
-  { id: 1, src: encodeURI('/Untitled design - 2025-08-10T221827.541.png'), alt: 'Logo 1' },
-  { id: 2, src: encodeURI('/Untitled design - 2025-08-10T222145.640.png'), alt: 'Logo 2' },
-  { id: 3, src: encodeURI('/Untitled design - 2025-08-10T222300.071.png'), alt: 'Logo 3' },
-  { id: 4, src: encodeURI('/Untitled design - 2025-08-10T222615.645.png'), alt: 'Logo 4' },
+  { id: 1, src: '/logos/logo1.png', alt: 'Logo 1' },
+  { id: 2, src: '/logos/logo2.png', alt: 'Logo 2' },
+  { id: 3, src: '/logos/logo3.png', alt: 'Logo 3' },
+  { id: 4, src: '/logos/logo4.png', alt: 'Logo 4' },
 ];
 
 // Create two rows from the same set in different orders for variety
