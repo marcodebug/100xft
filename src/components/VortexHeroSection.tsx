@@ -191,7 +191,7 @@ export default function VortexHeroSection() {
           >
             {[
               { number: "90%", label: "Profit Split" },
-              { number: "200K", label: "Max Account Size" },
+              { number: "400K", label: "Max Account Size" },
               { number: "24/7", label: "Support" },
               { number: "Q4 2025", label: "Launch" }
             ].map((stat, index) => (
