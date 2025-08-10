@@ -14,9 +14,9 @@ export default function HowItWorksSection() {
     seconds: 0
   });
 
-  // Countdown to Q4 2025 (October 1, 2025)
+  // Countdown to official launch (September 1, 2025)
   useEffect(() => {
-    const targetDate = new Date('2025-10-01T00:00:00Z').getTime();
+    const targetDate = new Date('2025-09-01T00:00:00Z').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -151,7 +151,7 @@ export default function HowItWorksSection() {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600/20 to-emerald-600/20 backdrop-blur-sm border border-green-500/30 rounded-full text-green-400 text-sm font-medium mb-4">
                   <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                  LAUNCHING SOON
+                  EARLY ACCESS
                 </div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                   Ready to Start Your{' '}
@@ -167,7 +167,7 @@ export default function HowItWorksSection() {
               {/* Countdown Timer */}
               <div className="mb-8">
                 <h4 className="text-center text-gray-400 text-sm font-semibold mb-6 tracking-wider">
-                  COUNTDOWN TO LAUNCH
+                  EARLY ACCESS ENDS • SEPTEMBER 1
                 </h4>
                 <div className="grid grid-cols-4 gap-4">
                   {[
@@ -183,13 +183,13 @@ export default function HowItWorksSection() {
                       transition={{ delay: index * 0.1, duration: 0.5 }}
                       className="text-center"
                     >
-                      <div className="bg-gradient-to-br from-gray-800/50 to-black/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-4 lg:p-6">
+                      <div className="bg-gradient-to-br from-gray-800/50 to-black/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-4 lg:p-6 min-h-[100px] flex flex-col items-center justify-center">
                         <motion.div
                           key={item.value}
                           initial={{ scale: 1.1, opacity: 0.7 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ duration: 0.3 }}
-                          className="text-2xl lg:text-3xl font-bold text-white mb-1"
+                          className="text-2xl lg:text-3xl font-bold text-white mb-1 font-mono tabular-nums leading-none"
                         >
                           {item.value.toString().padStart(2, '0')}
                         </motion.div>
@@ -210,7 +210,7 @@ export default function HowItWorksSection() {
                   whileTap={{ scale: 0.98 }}
                   className="w-full inline-block text-center bg-gradient-to-r from-brand-600 to-red-600 hover:from-brand-700 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50"
                 >
-                  Order Now
+                  Get Early Access
                 </motion.a>
                 
                 <p className="text-gray-500 text-sm">
