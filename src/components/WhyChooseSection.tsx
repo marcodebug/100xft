@@ -94,7 +94,7 @@ export default function WhyChooseSection() {
             </h2>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              From Tangier to the world — experience elite prop trading with unmatched benefits
+              Experience elite prop trading with unmatched benefits
             </p>
           </motion.div>
         </div>
