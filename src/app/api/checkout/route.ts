@@ -54,6 +54,11 @@ export async function POST(req: NextRequest) {
       cancel_url: `${origin}/?checkout=cancelled`,
       payment_method_types: ['card'],
       customer_email: email,
+      payment_intent_data: {
+        description: `${plan.label} — ${accountSize / 1000}K Account | 100XFT` ,
+        statement_descriptor: '100XFT',
+        statement_descriptor_suffix: 'CHALLENGE'
+      },
       line_items: [
         {
           price_data: {
