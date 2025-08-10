@@ -42,7 +42,7 @@ export default function EnhancedFooter() {
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10 mb-12 items-start">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <motion.div
@@ -50,7 +50,7 @@ export default function EnhancedFooter() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mb-6">
+              <div className="mb-6 max-w-xs">
                 {/* Brand logo */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -64,7 +64,7 @@ export default function EnhancedFooter() {
               </div>
               
               {/* Trust Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm border border-green-500/30 rounded-full text-xs mb-4">
+               <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm border border-green-500/30 rounded-full text-xs mb-4 w-fit">
                 <span className="text-lg">🇲🇦</span>
                 <span className="text-green-400 font-medium text-xs">Made in Morocco</span>
                 <span className="text-gray-400">—</span>
@@ -92,21 +92,21 @@ export default function EnhancedFooter() {
           </div>
 
           {/* Footer Links */}
-          {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
+           {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
             <motion.div
               key={category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
             >
-              <h4 className="text-white font-semibold mb-4 text-sm">{category}</h4>
-              <ul className="space-y-2">
+              <h4 className="text-white font-semibold mb-4 text-base">{category}</h4>
+              <ul className="space-y-3">
                 {links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <motion.a
                       href={link.href}
                       whileHover={{ x: 4 }}
-                      className="text-gray-400 hover:text-brand-400 transition-all duration-200 text-xs"
+                      className="text-gray-300 hover:text-brand-400 transition-all duration-200 text-sm"
                     >
                       {link.name}
                     </motion.a>
@@ -124,7 +124,7 @@ export default function EnhancedFooter() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="pt-8 border-t border-white/10"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <div className="text-gray-400 text-xs">
               © 2025 100XFT. All rights reserved.

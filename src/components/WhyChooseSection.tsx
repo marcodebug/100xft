@@ -183,14 +183,7 @@ export default function WhyChooseSection() {
                       />
                     )}
                     
-                    {/* Stack position number */}
-                    <div className="absolute top-4 left-4">
-                      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-                        isActive ? 'bg-white text-black' : 'bg-white/20 text-white'
-                      }`}>
-                        {position + 1}
-                      </div>
-                    </div>
+                    {/* Stack position number removed per request */}
                   </div>
                 </motion.div>
               );
