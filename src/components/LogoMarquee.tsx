@@ -11,6 +11,7 @@ const customLogos: LogoItem[] = [
   { id: 2, src: '/logos/logo6.svg', alt: 'Logo 2' },
   { id: 3, src: '/logos/logo7.svg', alt: 'Logo 3' },
   { id: 4, src: '/logos/logo8.svg', alt: 'Logo 4' },
+  { id: 5, src: '/logos/logo9.png', alt: 'Logo 5' },
 ];
 
 // Create two rows from the same set in different orders for variety
@@ -20,8 +21,8 @@ const logosRow2: LogoItem[] = [...customLogos].reverse();
 function Row({ items, reverse = false, durationSec = 16 }: { items: LogoItem[]; reverse?: boolean; durationSec?: number }) {
   const direction = reverse ? 'reverse' : 'normal';
   const speed = `${durationSec}s`;
-  const box = 140; // px
-  const gap = 22; // px
+  const box = 160; // px (larger)
+  const gap = 26; // px
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [baseItems, setBaseItems] = useState<LogoItem[]>(items);
@@ -58,7 +59,7 @@ function Row({ items, reverse = false, durationSec = 16 }: { items: LogoItem[]; 
             style={{ width: box, height: box, boxShadow: '0 10px 30px rgba(30, 64, 175, 0.12) inset, 0 2px 10px rgba(0,0,0,0.25)' }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.src} alt={item.alt} className="w-12 h-12 object-contain opacity-90" />
+            <img src={item.src} alt={item.alt} className="w-16 h-16 object-contain opacity-95" />
           </div>
         ))}
       </div>
