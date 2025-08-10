@@ -68,14 +68,7 @@ export default function VortexHeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-7 px-4 max-w-2xl mx-auto"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative px-6 py-3 bg-gradient-to-r from-brand-600 to-red-600 hover:from-brand-700 hover:to-red-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 border border-brand-400/20 w-full sm:w-auto text-center text-sm sm:text-base"
-            >
-              <span className="relative z-10">Join Demo Challenge</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-red-400 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            </motion.button>
+            {/* Removed Demo CTA per request */}
 
             <motion.a
               href="#pricing"

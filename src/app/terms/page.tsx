@@ -155,7 +155,7 @@ export default function TermsPage() {
                 </p>
                 <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
                   <p className="text-white">Email: legal@100xft.com</p>
-                  <p className="text-white">Address: 100XFT, Tangier, Morocco</p>
+                  <p className="text-white">Address: 100XFT, Morocco</p>
                 </div>
               </section>
 

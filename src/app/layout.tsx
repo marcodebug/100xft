@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "100XFT – First Moroccan Prop Firm | US Clients Welcome",
-  description: "Morocco's first prop trading firm built in Tangier. Elite challenges for traders worldwide including US clients. Up to 90% profit split, zero caps. Pre-register now.",
+  description: "Morocco's first prop trading firm. Elite challenges for traders worldwide including US clients. Up to 90% profit split, zero caps. Pre-register now.",
   metadataBase: new URL('https://100xft.com'),
   keywords: ["prop trading", "funded trading", "Morocco", "forex", "crypto", "futures", "trading challenge"],
   authors: [{ name: "100XFT Team" }],
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://100xft.com',
     title: '100XFT – First Moroccan Prop Firm | US Clients Welcome',
-    description: 'Morocco\'s first prop trading firm built in Tangier. Elite challenges for traders worldwide including US clients.',
+     description: 'Morocco\'s first prop trading firm. Elite challenges for traders worldwide including US clients.',
     siteName: '100XFT',
     images: [
       {
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '100XFT – First Moroccan Prop Firm | US Clients Welcome',
-    description: 'Morocco\'s first prop trading firm built in Tangier. Elite challenges for traders worldwide including US clients.',
+     description: 'Morocco\'s first prop trading firm. Elite challenges for traders worldwide including US clients.',
     creator: '@100XFT',
     images: ['/Untitled%20design.svg']
   },

@@ -137,7 +137,7 @@ export default function NewHeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
         >
-          Proudly built in Tangier, empowering traders worldwide (yes, US clients welcome). Experience elite
+              Empowering traders worldwide (yes, US clients welcome). Experience elite
           prop trading with up to <span className="text-red-400 font-bold">90% profit split</span> and{' '}
           <span className="text-red-400 font-bold">zero profit caps</span>.
         </motion.p>

@@ -118,8 +118,10 @@ export default function OrderModal({ planId, accountSize, open, onClose }: Order
 
           <label className="flex items-center gap-3 text-sm text-gray-300">
             <input type="checkbox" checked={values.accept} onChange={update('accept')} className="w-4 h-4" />
-            I accept the terms and understand this is a digital service.
+            I accept the terms.
           </label>
+
+          <p className="text-sm text-gray-400 mt-2">Questions? Email <a href="mailto:contact@100xft.com" className="text-brand-400">contact@100xft.com</a></p>
           {errors.accept && <p className="text-red-400 text-xs -mt-2">{errors.accept}</p>}
 
           <button

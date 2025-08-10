@@ -29,20 +29,20 @@ export default function HeroSection() {
 
         {/* Main headline */}
         <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
-          Morocco's First Prop Trading Firm — <span className="text-brand-500">100XFT</span>
+          The First Moroccan Prop Trading Firm — <span className="text-brand-500">100XFT</span>
         </h2>
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-          Proudly built in Tangier, empowering traders worldwide (yes, US clients welcome). 
-          Experience elite prop trading with up to <span className="text-brand-500 font-semibold">90% profit split</span> and 
+          Empowering traders worldwide (yes, US clients welcome). Experience elite prop trading with up to 
+          <span className="text-brand-500 font-semibold"> 90% profit split</span> and
           <span className="text-brand-500 font-semibold"> zero profit caps</span>.
         </p>
 
         {/* Trust Ribbon */}
         <div className="mb-8 flex justify-center">
           <div className="px-4 py-2 bg-brand-900/30 border border-brand-500/30 rounded-full text-brand-400 text-sm font-medium backdrop-blur-sm">
-            🇲🇦 Made in Morocco — 🇺🇸 Accepting US Traders
+            🇲🇦 Morocco — 🇺🇸 Accepting US Traders
           </div>
         </div>
 
@@ -64,17 +64,11 @@ export default function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button 
-            onClick={() => setShowDemoForm(true)}
-            className="px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-bold rounded-lg red-glow hover:from-brand-700 hover:to-brand-800 btn-glow transition-all duration-300 min-w-[200px]"
-          >
-            Join Demo Challenge
-          </button>
           <a 
             href="#pricing"
             className="px-8 py-4 bg-transparent border-2 border-brand-500 text-brand-500 font-bold rounded-lg hover:bg-brand-500 hover:text-white transition-all duration-300 min-w-[200px]"
           >
-            Order Now
+            Get Early Access
           </a>
         </div>
 

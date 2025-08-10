@@ -17,7 +17,7 @@ export default function EnhancedFooter() {
       { name: 'About Us', href: '#' },
       { name: 'Careers', href: '#' },
       { name: 'Press', href: '#' },
-      { name: 'Contact', href: 'mailto:support@100xft.com' }
+      { name: 'Contact', href: 'mailto:contact@100xft.com' }
     ],
     Trading: [
       { name: 'Challenge Rules', href: '/rules' },
@@ -62,9 +62,9 @@ export default function EnhancedFooter() {
                   alt="100XFT logo"
                   className="h-10 w-auto mb-3 drop-shadow-[0_2px_12px_rgba(255,0,0,0.25)]"
                 />
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Morocco's first prop trading firm, built in Tangier. Empowering traders worldwide with elite challenges and up to 90% profit splits.
-                </p>
+                 <p className="text-gray-300 text-sm leading-relaxed">
+                   Morocco's first prop trading firm. Empowering traders worldwide with elite challenges and up to 90% profit splits.
+                 </p>
               </div>
               
               {/* Trust Badge */}

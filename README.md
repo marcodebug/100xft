@@ -6,7 +6,7 @@
 
 ## Overview
 
-100XFT is Morocco's first proprietary trading firm, built in Tangier and designed to empower traders worldwide. We offer elite trading challenges across Forex, Crypto, and Futures markets with up to 90% profit splits and no profit caps on funded accounts.
+100XFT is Morocco's first proprietary trading firm, designed to empower traders worldwide. We offer elite trading challenges across Forex, Crypto, and Futures markets with up to 90% profit splits and no profit caps on funded accounts.
 
 ## 🚀 Features
 
@@ -212,6 +212,6 @@ We welcome traders from 195+ countries including:
 
 ---
 
-**Made with ❤️ in Tangier, Morocco** 🇲🇦
+**Made with ❤️ in Morocco** 🇲🇦
 
 For more information, visit [100xft.com](https://100xft.com)

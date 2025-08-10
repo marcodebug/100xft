@@ -26,7 +26,7 @@ export default function StructuredData() {
         "name": "Where is 100XFT based?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "100XFT is Morocco's first prop trading firm, proudly built in Tangier and serving traders worldwide."
+          "text": "100XFT is Morocco's first prop trading firm, serving traders worldwide."
         }
       },
       {
@@ -49,7 +49,6 @@ export default function StructuredData() {
     "logo": "https://100xft.com/Untitled%20design.svg",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Tangier",
       "addressCountry": "MA"
     },
     "sameAs": [
