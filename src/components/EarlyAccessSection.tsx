@@ -121,7 +121,7 @@ export default function EarlyAccessSection() {
         <div className="text-center">
           <a 
             href="#pricing"
-            className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-lg red-glow hover:from-red-700 hover:to-red-800 btn-glow transition-all duration-300 mr-4"
+            className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-700 text-white font-bold rounded-lg hover:from-green-700 hover:to-emerald-800 transition-all duration-300 mr-4 border border-green-400/40"
           >
             Order Now
           </a>
