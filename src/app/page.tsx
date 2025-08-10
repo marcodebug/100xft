@@ -21,7 +21,7 @@ export default function Home() {
       {/* <SupportedPlatformsSection /> */}
       <HowItWorksSection />
       <EnhancedFooter />
-      <StickyPreorderBar />
+      {/* StickyPreorderBar removed per request */}
     </div>
   );
 }
