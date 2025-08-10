@@ -4,19 +4,17 @@ import React, { useEffect, useRef, useState } from 'react';
 
 type LogoItem = { id: number; src: string; alt: string };
 
-const logosRow1: LogoItem[] = [
-  { id: 1, src: '/platforms/mt5.svg', alt: 'MetaTrader 5' },
-  { id: 2, src: '/platforms/tradingview.svg', alt: 'TradingView' },
-  { id: 3, src: '/platforms/tradelocker.svg', alt: 'TradeLocker' },
-  { id: 4, src: '/platforms/ctrader.svg', alt: 'cTrader' },
+// Use the uploaded PNG logos from /public instead of placeholder icons
+const customLogos: LogoItem[] = [
+  { id: 1, src: encodeURI('/Untitled design - 2025-08-10T221827.541.png'), alt: 'Logo 1' },
+  { id: 2, src: encodeURI('/Untitled design - 2025-08-10T222145.640.png'), alt: 'Logo 2' },
+  { id: 3, src: encodeURI('/Untitled design - 2025-08-10T222300.071.png'), alt: 'Logo 3' },
+  { id: 4, src: encodeURI('/Untitled design - 2025-08-10T222615.645.png'), alt: 'Logo 4' },
 ];
 
-const logosRow2: LogoItem[] = [
-  { id: 5, src: '/platforms/matchtrader.svg', alt: 'Match Trader' },
-  { id: 6, src: '/platforms/tradingview.svg', alt: 'TradingView' },
-  { id: 7, src: '/platforms/ctrader.svg', alt: 'cTrader' },
-  { id: 8, src: '/platforms/mt5.svg', alt: 'MetaTrader 5' },
-];
+// Create two rows from the same set in different orders for variety
+const logosRow1: LogoItem[] = customLogos;
+const logosRow2: LogoItem[] = [...customLogos].reverse();
 
 function Row({ items, reverse = false, durationSec = 16 }: { items: LogoItem[]; reverse?: boolean; durationSec?: number }) {
   const direction = reverse ? 'reverse' : 'normal';
@@ -59,7 +57,7 @@ function Row({ items, reverse = false, durationSec = 16 }: { items: LogoItem[]; 
             style={{ width: box, height: box, boxShadow: '0 10px 30px rgba(30, 64, 175, 0.12) inset, 0 2px 10px rgba(0,0,0,0.25)' }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.src} alt={item.alt} className="w-12 h-12 opacity-90" />
+            <img src={item.src} alt={item.alt} className="w-12 h-12 object-contain opacity-90" />
           </div>
         ))}
       </div>
