@@ -46,7 +46,7 @@ export default function StructuredData() {
     "name": "100XFT",
     "description": "Morocco's first prop trading firm offering elite trading challenges",
     "url": "https://100xft.com",
-    "logo": "https://100xft.com/logo.png",
+    "logo": "https://100xft.com/Untitled%20design.svg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Tangier",

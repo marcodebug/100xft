@@ -256,20 +256,7 @@ export default function PricingCalculator() {
           )}
         </div>
 
-        {/* Enhanced Compare hint */}
-        {comparingPlans.size === 0 && viewMode === 'grid' && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-center mt-16"
-          >
-            <p className="text-gray-500 text-sm">
-              Ready to compare challenges? 
-              <span className="text-brand-400 ml-1">Check "Compare" on multiple cards to analyze side by side</span>
-            </p>
-          </motion.div>
-        )}
+        {/* Removed compare hint per request */}
       </div>
 
       {/* Global Order Modal */}

@@ -26,6 +26,10 @@ export const metadata: Metadata = {
   authors: [{ name: "100XFT Team" }],
   creator: "100XFT",
   publisher: "100XFT",
+  icons: {
+    icon: "/Untitled%20design.svg",
+    apple: "/Untitled%20design.svg",
+  },
   robots: {
     index: true,
     follow: true,
@@ -44,12 +48,21 @@ export const metadata: Metadata = {
     title: '100XFT – First Moroccan Prop Firm | US Clients Welcome',
     description: 'Morocco\'s first prop trading firm built in Tangier. Elite challenges for traders worldwide including US clients.',
     siteName: '100XFT',
+    images: [
+      {
+        url: '/Untitled%20design.svg',
+        width: 1200,
+        height: 630,
+        alt: '100XFT Logo'
+      }
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: '100XFT – First Moroccan Prop Firm | US Clients Welcome',
     description: 'Morocco\'s first prop trading firm built in Tangier. Elite challenges for traders worldwide including US clients.',
     creator: '@100XFT',
+    images: ['/Untitled%20design.svg']
   },
 };
 

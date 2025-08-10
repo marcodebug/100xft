@@ -8,6 +8,7 @@ import { BackgroundBeams } from './ui/background-beams';
 
 export default function VortexHeroSection() {
   const [email, setEmail] = useState('');
+  const [logoError, setLogoError] = useState(false);
 
   return (
     <section className="relative min-h-screen overflow-x-hidden bg-neutral-950">
@@ -31,18 +32,31 @@ export default function VortexHeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-3 sm:space-y-4"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight px-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] sm:leading-[1.12] md:leading-[1.08] px-2">
               <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent block">
                 Easiest prop firm challenges to pass!
               </span>
-              <span className="bg-gradient-to-r from-brand-400 via-red-400 to-orange-400 bg-clip-text text-transparent block mt-1">
-                100XFT
-              </span>
             </h1>
+            {/* Centered large logo replacing the red 100XFT text */}
+            <div className="flex justify-center">
+              {logoError ? (
+                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-brand-400 via-red-400 to-orange-400 bg-clip-text text-transparent">
+                  100XFT
+                </span>
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src="/Untitled%20design.svg"
+                  alt="100XFT logo"
+                  onError={() => setLogoError(true)}
+                  className="h-28 sm:h-36 md:h-48 lg:h-64 xl:h-72 2xl:h-80 w-auto drop-shadow-[0_6px_28px_rgba(255,0,0,0.35)]"
+                />
+              )}
+            </div>
             
-            <div className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
+            <div className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-snug sm:leading-normal px-4 mt-1">
               Unlock funded accounts with fair rules, rapid payouts, and professional support.
             </div>
           </motion.div>
@@ -52,7 +66,7 @@ export default function VortexHeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 px-4 max-w-2xl mx-auto"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-7 px-4 max-w-2xl mx-auto"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}

@@ -55,9 +55,13 @@ export default function EnhancedFooter() {
               transition={{ duration: 0.6 }}
             >
               <div className="mb-6">
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-brand-400 via-red-400 to-orange-400 bg-clip-text text-transparent mb-2">
-                  100XFT
-                </h3>
+                {/* Brand logo */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Untitled%20design.svg"
+                  alt="100XFT logo"
+                  className="h-10 w-auto mb-3 drop-shadow-[0_2px_12px_rgba(255,0,0,0.25)]"
+                />
                 <p className="text-gray-300 text-sm leading-relaxed">
                   Morocco's first prop trading firm, built in Tangier. Empowering traders worldwide with elite challenges and up to 90% profit splits.
                 </p>
