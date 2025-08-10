@@ -205,7 +205,7 @@ export default function HowItWorksSection() {
               {/* CTA Button */}
               <div className="text-center space-y-4">
                 <motion.a
-                  href="#pricing"
+                  href="#challenges"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full inline-block text-center bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 border border-green-400/40"
