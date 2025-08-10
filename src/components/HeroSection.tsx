@@ -57,7 +57,7 @@ export default function HeroSection() {
               className="flex-1 px-6 py-4 bg-gray-900/80 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
             />
             <a
-              href="#pricing"
+              href="#challenges"
               className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-700 text-white font-semibold rounded-lg hover:from-green-700 hover:to-emerald-800 transition-all duration-300 border border-green-400/40 text-center"
             >
               Get Early Access
@@ -68,7 +68,7 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a 
-            href="#pricing"
+            href="#challenges"
             className="px-8 py-4 bg-transparent border-2 border-green-500 text-green-500 font-bold rounded-lg hover:bg-green-600 hover:text-white transition-all duration-300 min-w-[200px]"
           >
             Get Early Access
