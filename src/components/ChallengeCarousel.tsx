@@ -126,9 +126,7 @@ export default function ChallengeCarousel({
   if (isMobile) {
     return (
       <div className="relative">
-        <div className="text-center mb-4">
-          <p className="text-gray-400 text-sm">Swipe to explore challenges</p>
-        </div>
+        {/* Mobile hint removed per request */}
 
         <div className="overflow-x-auto -mx-4 px-4 py-2 snap-x snap-mandatory scrollbar-thin">
           <div className="flex gap-3 items-stretch">
@@ -154,10 +152,7 @@ export default function ChallengeCarousel({
   // Desktop/Tablet: Framer Motion carousel
   return (
     <div className="relative">
-      {/* Mobile hint */}
-      <div className="md:hidden text-center mb-4">
-        <p className="text-gray-400 text-sm">Swipe to explore challenges</p>
-      </div>
+      {/* Mobile hint removed per request */}
 
       {/* Navigation arrows - desktop/tablet only */}
       {itemsPerView < mainPlans.length && (

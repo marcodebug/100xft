@@ -121,7 +121,7 @@ export default function PricingCalculator() {
   }
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section id="pricing" className="relative py-24 overflow-hidden">
       {/* Smooth gradient transition */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-black to-gray-900" />
       

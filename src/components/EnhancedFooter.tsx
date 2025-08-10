@@ -14,30 +14,26 @@ export default function EnhancedFooter() {
 
   const footerLinks = {
     Company: [
-      { name: 'About Us', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Press', href: '#' },
+      { name: 'About Us', href: '/about' },
+      { name: 'Careers', href: '/careers' },
+      // Press removed
       { name: 'Contact', href: 'mailto:contact@100xft.com' }
     ],
     Trading: [
       { name: 'Challenge Rules', href: '/rules' },
-      { name: 'Profit Splits', href: '#' },
-      { name: 'Platforms', href: '#' },
+      { name: 'Profit Splits', href: '/profit-splits' },
+      { name: 'Platforms', href: '/platforms' },
       { name: 'FAQ', href: '/faq' }
     ],
     Legal: [
       { name: 'Terms of Service', href: '/terms' },
       { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Risk Disclosure', href: '/risk-disclosure' },
-      { name: 'Compliance', href: '#' }
+      { name: 'Risk Disclosure', href: '/risk-disclosure' }
     ],
     Support: [
-      { name: 'Help Center', href: '/faq' },
-      { name: 'Live Chat', href: '#' },
-      { name: 'Documentation', href: '#' },
-      { name: 'Status', href: '#' }
+      { name: 'Help Center', href: '/faq' }
     ]
-  };
+  } as const;
 
   return (
     <footer className="relative overflow-hidden bg-neutral-950">
