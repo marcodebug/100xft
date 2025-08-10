@@ -67,8 +67,8 @@ export default function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a 
-            href="#challenges"
+            <a 
+            href="#pricing"
             className="px-8 py-4 bg-transparent border-2 border-green-500 text-green-500 font-bold rounded-lg hover:bg-green-600 hover:text-white transition-all duration-300 min-w-[200px]"
           >
             Get Early Access
