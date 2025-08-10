@@ -12,7 +12,7 @@ export default function VortexHeroSection() {
 
   return (
     <section className="relative min-h-screen overflow-x-hidden bg-neutral-950">
-      <BackgroundBeams intensity="medium" />
+      <BackgroundBeams intensity="medium" mobileBoost />
       <div className="relative z-10 flex items-center flex-col justify-center px-6 md:px-8 lg:px-12 py-8 w-full h-full min-h-screen">
         {/* Content Container */}
         <div className="relative z-10 text-center max-w-5xl mx-auto w-full">
