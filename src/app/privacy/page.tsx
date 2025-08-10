@@ -198,7 +198,7 @@ export default function PrivacyPage() {
                   For questions about this Privacy Policy or to exercise your rights, please contact us:
                 </p>
                 <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                  <p className="text-white">Email: privacy@100xft.com</p>
+                  <p className="text-white">Email: contact@100xft.com</p>
                   <p className="text-white">Data Protection Officer: dpo@100xft.com</p>
                   <p className="text-white">Address: 100XFT, Morocco</p>
                 </div>
