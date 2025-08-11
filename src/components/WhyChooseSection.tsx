@@ -64,7 +64,7 @@ export default function WhyChooseSection() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative pt-24 pb-12 md:py-24 overflow-hidden">
       {/* Gradient transition from hero */}
       <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-gray-950" />
       
@@ -191,7 +191,7 @@ export default function WhyChooseSection() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-center items-center gap-6 mt-8">
+          <div className="flex justify-center items-center gap-6 mt-4">
             <motion.button
               onClick={prevCard}
               whileHover={{ scale: 1.1 }}
@@ -227,16 +227,7 @@ export default function WhyChooseSection() {
             </motion.button>
           </div>
 
-          {/* Mobile swipe hint */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="text-center mt-6"
-          >
-            <p className="text-gray-500 text-xs">← Swipe to cycle through cards →</p>
-            <p className="text-gray-600 text-xs mt-1">🃏 Card stack • All features visible</p>
-          </motion.div>
+          {/* Mobile swipe hint removed per request */}
         </div>
 
         {/* Desktop: Original Grid Layout */}
@@ -300,23 +291,7 @@ export default function WhyChooseSection() {
           ))}
         </div>
 
-        {/* Bottom CTA hint */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-center mt-16"
-        >
-          <p className="text-gray-500 text-sm">
-            Ready to experience elite prop trading? 
-            <span className="text-brand-400 ml-1">Scroll down to choose your challenge</span>
-          </p>
-          <div className="flex items-center justify-center gap-2 mt-3">
-            <div className="w-1 h-1 bg-brand-500 rounded-full animate-pulse"></div>
-            <p className="text-gray-600 text-xs">🃏 Stacked deck • Swipe to explore</p>
-            <div className="w-1 h-1 bg-brand-500 rounded-full animate-pulse"></div>
-          </div>
-        </motion.div>
+        {/* Bottom CTA hint removed and spacing minimized */}
       </div>
     </section>
   );

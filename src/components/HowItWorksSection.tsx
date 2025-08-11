@@ -60,7 +60,7 @@ export default function HowItWorksSection() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative pt-12 md:pt-24 pb-20 overflow-hidden">
       {/* Final gradient transition leading to footer */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-neutral-950" />
       
