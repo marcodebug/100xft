@@ -1,8 +1,21 @@
 /* NEXT-SPRINT: Stripe / Analytics */
 
-/* Global Section Utilities */
-.section-pad { 
-  @apply py-20 md:py-28 lg:py-32; 
+/* Global Section Utilities (avoid responsive @apply for compatibility on Vercel) */
+.section-pad {
+  padding-top: 5rem;   /* py-20 */
+  padding-bottom: 5rem;
+}
+@media (min-width: 768px) { /* md */
+  .section-pad {
+    padding-top: 7rem;   /* approx py-28 */
+    padding-bottom: 7rem;
+  }
+}
+@media (min-width: 1024px) { /* lg */
+  .section-pad {
+    padding-top: 8rem;   /* py-32 */
+    padding-bottom: 8rem;
+  }
 }
 
 .section-title { 

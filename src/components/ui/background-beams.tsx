@@ -1,9 +1,7 @@
 "use client";
-import React from "react";
+import { memo, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-import React, { useEffect, useState } from "react";
 
 type BackgroundBeamsProps = {
   className?: string;
@@ -11,7 +9,7 @@ type BackgroundBeamsProps = {
   mobileBoost?: boolean; // if true, bump intensity one level on <640px
 };
 
-export const BackgroundBeams = React.memo(
+export const BackgroundBeams = memo(
   ({ className, intensity = 'low', mobileBoost = false }: BackgroundBeamsProps) => {
     const [isMobile, setIsMobile] = useState<boolean>(false);
 
