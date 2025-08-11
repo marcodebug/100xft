@@ -8,7 +8,7 @@ import { BackgroundBeams } from './ui/background-beams';
 export default function EnhancedFooter() {
   const socialLinks = [
     { name: 'Twitter', href: 'https://x.com/100xft', icon: '𝕏' },
-    { name: 'Telegram', href: 'https://t.me/I00XFT', icon: '✈️' },
+    { name: 'Telegram', href: 'https://t.me/I00XFT?start=start', icon: '✈️' },
     { name: 'Instagram', href: 'https://www.instagram.com/100xft/', icon: '📷' }
   ];
 
@@ -32,7 +32,7 @@ export default function EnhancedFooter() {
     ],
     Support: [
       { name: 'Help Center', href: '/faq' },
-      { name: 'Live Chat', href: 'https://t.me/I00XFT' }
+      { name: 'Live Chat', href: 'https://t.me/I00XFT?start=start' }
     ]
   } as const;
 

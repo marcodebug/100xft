@@ -53,7 +53,7 @@ export default function StructuredData() {
     },
     "sameAs": [
       "https://x.com/100xft",
-      "https://t.me/I00XFT",
+      "https://t.me/I00XFT?start=start",
       "https://www.instagram.com/100xft/"
     ]
   };

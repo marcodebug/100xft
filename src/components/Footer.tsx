@@ -14,7 +14,7 @@ export default function Footer() {
     ],
     Community: [
       { name: 'Twitter', href: 'https://x.com/100xft' },
-      { name: 'Telegram', href: 'https://t.me/I00XFT' },
+      { name: 'Telegram', href: 'https://t.me/I00XFT?start=start' },
       { name: 'Instagram', href: 'https://www.instagram.com/100xft/' }
     ]
   };
