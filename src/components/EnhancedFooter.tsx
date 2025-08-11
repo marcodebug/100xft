@@ -31,7 +31,8 @@ export default function EnhancedFooter() {
       { name: 'Risk Disclosure', href: '/risk-disclosure' }
     ],
     Support: [
-      { name: 'Help Center', href: '/faq' }
+      { name: 'Help Center', href: '/faq' },
+      { name: 'Live Chat', href: 'https://t.me/I00xclub' }
     ]
   } as const;
 
@@ -107,6 +108,8 @@ export default function EnhancedFooter() {
                       href={link.href}
                       whileHover={{ x: 4 }}
                       className="text-gray-300 hover:text-brand-400 transition-all duration-200 text-sm"
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
                       {link.name}
                     </motion.a>
