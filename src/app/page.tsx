@@ -9,7 +9,6 @@ const LogoMarquee = dynamic(() => import('@/components/LogoMarquee'), { loading:
 // import SupportedPlatformsSection from '@/components/SupportedPlatformsSection';
 // import EarlyAccessSection from '@/components/EarlyAccessSection';
 import EnhancedFooter from '@/components/EnhancedFooter';
-import StickyPreorderBar from '@/components/StickyPreorderBar';
 
 export default function Home() {
   return (
