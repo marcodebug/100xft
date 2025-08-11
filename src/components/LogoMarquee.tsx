@@ -61,7 +61,16 @@ function Row({ items, reverse = false, durationSec = 16 }: { items: LogoItem[]; 
             style={{ width: box, height: box, boxShadow: '0 10px 30px rgba(30, 64, 175, 0.12) inset, 0 2px 10px rgba(0,0,0,0.25)' }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.src} alt={item.alt} className="w-24 h-24 object-contain opacity-95" />
+            <img 
+              src={item.src} 
+              alt={item.alt} 
+              className="w-24 h-24 object-contain opacity-95"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
+              width="96"
+              height="96"
+            />
           </div>
         ))}
       </div>
@@ -71,7 +80,7 @@ function Row({ items, reverse = false, durationSec = 16 }: { items: LogoItem[]; 
 
 export default function LogoMarquee() {
   return (
-    <section className="relative py-12 overflow-hidden">
+    <section className="relative py-12 overflow-hidden" style={{ contentVisibility: 'auto', containIntrinsicSize: '800px' } as React.CSSProperties}>
       {/* Deep navy base to match reference */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0b1220] via-[#0b1426] to-[#0b1220]" />
       <div className="pointer-events-none absolute inset-x-0 -top-16 h-16 bg-gradient-to-b from-transparent to-[#0b1220]" />

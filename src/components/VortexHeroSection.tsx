@@ -55,6 +55,10 @@ export default function VortexHeroSection() {
                   alt="100XFT logo"
                   onError={() => setLogoError(true)}
                   className="h-28 sm:h-36 md:h-48 lg:h-64 xl:h-72 2xl:h-80 w-auto drop-shadow-[0_6px_28px_rgba(255,0,0,0.35)]"
+                  fetchPriority="high"
+                  decoding="async"
+                  width="512"
+                  height="512"
                 />
               )}
             </div>

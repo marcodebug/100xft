@@ -75,6 +75,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <StructuredData />
+        <link rel="preload" as="image" href="/Untitled%20design.svg" imagesrcset="/Untitled%20design.svg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

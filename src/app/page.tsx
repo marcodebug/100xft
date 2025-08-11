@@ -1,15 +1,15 @@
 // NEXT-SPRINT: Stripe + Analytics
 
+import dynamic from 'next/dynamic';
 import VortexHeroSection from '@/components/VortexHeroSection';
-import WhyChooseSection from '@/components/WhyChooseSection';
-// import RewardCycleBanner from '@/components/RewardCycleBanner';
-import PricingCalculator from '@/components/PricingCalculator';
+const WhyChooseSection = dynamic(() => import('@/components/WhyChooseSection'), { ssr: true, loading: () => null });
+const PricingCalculator = dynamic(() => import('@/components/PricingCalculator'), { ssr: false, loading: () => null });
+const HowItWorksSection = dynamic(() => import('@/components/HowItWorksSection'), { ssr: false, loading: () => null });
+const LogoMarquee = dynamic(() => import('@/components/LogoMarquee'), { ssr: false, loading: () => null });
 // import SupportedPlatformsSection from '@/components/SupportedPlatformsSection';
-import HowItWorksSection from '@/components/HowItWorksSection';
 // import EarlyAccessSection from '@/components/EarlyAccessSection';
 import EnhancedFooter from '@/components/EnhancedFooter';
 import StickyPreorderBar from '@/components/StickyPreorderBar';
-import LogoMarquee from '@/components/LogoMarquee';
 
 export default function Home() {
   return (
