@@ -148,7 +148,9 @@ export default function FAQPage() {
             <p className="text-gray-300 mb-6">Our support team is here to help you succeed</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="#"
+                href="https://t.me/I00XFT"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-brand-600 to-red-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-brand-700 hover:to-red-700 transition-all duration-300"
               >
                 💬 Live Chat
