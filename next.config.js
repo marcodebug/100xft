@@ -41,6 +41,12 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
+        ],
+      },
+      // Aggressive caching for Next.js build assets only (safe to cache long-term)
+      {
+        source: '/_next/static/:path*',
+        headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
