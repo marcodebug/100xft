@@ -262,14 +262,6 @@ export const plans: Plan[] = [
     label: 'Instant Funded',
     steps: ['funded'],
     rules: {
-      25000: {
-        dailyLossLimit: 5,
-        maxDrawdown: 8,
-        inactivityDays: 30,
-        profitSplit: 80,
-        leverage: '1:50',
-        price: 1000
-      },
       10000: {
         dailyLossLimit: 5,
         maxDrawdown: 8,
@@ -278,13 +270,13 @@ export const plans: Plan[] = [
         leverage: '1:50',
         price: 400
       },
-      20000: {
+      25000: {
         dailyLossLimit: 5,
         maxDrawdown: 8,
         inactivityDays: 30,
         profitSplit: 80,
         leverage: '1:50',
-        price: 800
+        price: 1000
       },
       50000: {
         dailyLossLimit: 5,
@@ -301,30 +293,6 @@ export const plans: Plan[] = [
         profitSplit: 80,
         leverage: '1:50',
         price: 4000
-      },
-      150000: {
-        dailyLossLimit: 5,
-        maxDrawdown: 8,
-        inactivityDays: 30,
-        profitSplit: 80,
-        leverage: '1:50',
-        price: 6000
-      },
-      200000: {
-        dailyLossLimit: 5,
-        maxDrawdown: 8,
-        inactivityDays: 30,
-        profitSplit: 80,
-        leverage: '1:50',
-        price: 8000
-      },
-      400000: {
-        dailyLossLimit: 5,
-        maxDrawdown: 8,
-        inactivityDays: 30,
-        profitSplit: 80,
-        leverage: '1:50',
-        price: 16000
       }
     }
   },
