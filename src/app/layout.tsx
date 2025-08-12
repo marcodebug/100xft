@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import "../../styles/sections.css";
 // LuxGradient removed - animations now built into NewHeroSection
@@ -85,6 +86,7 @@ export default function RootLayout({
             {children}
           </Suspense>
         </ErrorBoundary>
+        <Analytics />
       </body>
     </html>
   );
