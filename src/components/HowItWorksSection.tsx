@@ -77,9 +77,9 @@ export default function HowItWorksSection() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-600/20 to-red-600/20 backdrop-blur-sm border border-brand-500/30 rounded-full text-brand-400 text-sm font-medium mb-6">
-              <span className="text-xl">🚀</span>
-              YOUR JOURNEY
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-gradient-to-r from-brand-600/30 to-red-600/30 backdrop-blur-sm border border-brand-500/40 rounded-full text-brand-300 text-base font-semibold tracking-wide shadow-[0_0_20px_rgba(255,31,31,0.15)] mb-6">
+              <span className="text-2xl">🚀</span>
+              Trading Journey
             </div>
             
             <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
@@ -89,8 +89,8 @@ export default function HowItWorksSection() {
               </span>
             </h2>
             
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Your journey to becoming a funded trader in three simple steps
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              Your path to becoming a funded trader in three simple steps
             </p>
           </motion.div>
         </div>
@@ -160,7 +160,7 @@ export default function HowItWorksSection() {
                   </span>
                 </h3>
                 <p className="text-gray-300 text-lg">
-                  Join thousands of traders who have chosen 100XFT for their prop trading career
+                  Join traders who have chosen 100XFT for their prop trading career
                 </p>
               </div>
 
