@@ -4,7 +4,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { plans, accountSizes, futuresAccountSizes, instantAccountSizes, formatAccountSize, isEarlyAccessActive, earlyAccess } from '@/data/plans';
+import { plans, accountSizes, futuresAccountSizes, cryptoAccountSizes, instantAccountSizes, formatAccountSize, isEarlyAccessActive, earlyAccess } from '@/data/plans';
 import { AccountSize } from '@/types/plan';
 // Removed PreorderForm usage in favor of Stripe Checkout
 import ChallengeCard from './ChallengeCard';
@@ -23,9 +23,7 @@ export default function PricingCalculator() {
 
   // Ensure selected account size is valid when switching filters (futures has custom sizes)
   useEffect(() => {
-    const baseList = (mode === 'challenges' && filterType === 'crypto')
-      ? ([200000] as AccountSize[])
-      : (filterType === 'futures' ? futuresAccountSizes : accountSizes);
+    const baseList = filterType === 'futures' ? futuresAccountSizes : (filterType === 'crypto' ? cryptoAccountSizes : accountSizes);
     const list = mode === 'instant' ? instantAccountSizes : baseList;
     if (!list.includes(selectedAccountSize)) {
       setSelectedAccountSize(list[0] as AccountSize);
@@ -240,38 +238,16 @@ export default function PricingCalculator() {
                   <input
                     type="range"
                     min={0}
-                    max={(mode === 'instant' 
-                          ? instantAccountSizes 
-                          : (mode === 'challenges' && filterType === 'crypto' 
-                              ? ([200000] as AccountSize[]) 
-                              : (filterType === 'futures' ? futuresAccountSizes : accountSizes)
-                            )
-                        ).length - 1}
-                    value={(mode === 'instant' 
-                            ? instantAccountSizes 
-                            : (mode === 'challenges' && filterType === 'crypto' 
-                                ? ([200000] as AccountSize[]) 
-                                : (filterType === 'futures' ? futuresAccountSizes : accountSizes)
-                              )
-                          ).indexOf(selectedAccountSize)}
+                    max={(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : (filterType === 'crypto' ? cryptoAccountSizes : accountSizes))).length - 1}
+                    value={(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : (filterType === 'crypto' ? cryptoAccountSizes : accountSizes))).indexOf(selectedAccountSize)}
                     onChange={(e) => {
-                      const list = mode === 'instant' 
-                        ? instantAccountSizes 
-                        : (mode === 'challenges' && filterType === 'crypto' 
-                            ? ([200000] as AccountSize[]) 
-                            : (filterType === 'futures' ? futuresAccountSizes : accountSizes));
+                      const list = mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : (filterType === 'crypto' ? cryptoAccountSizes : accountSizes));
                       setSelectedAccountSize(list[parseInt(e.target.value)] as AccountSize);
                     }}
                     className="w-full h-3 bg-gray-800/50 rounded-lg appearance-none cursor-pointer slider-thumb"
                   />
                   <div className="flex justify-between text-xs text-gray-400">
-                    {(mode === 'instant' 
-                        ? instantAccountSizes 
-                        : (mode === 'challenges' && filterType === 'crypto' 
-                            ? ([200000] as AccountSize[]) 
-                            : (filterType === 'futures' ? futuresAccountSizes : accountSizes)
-                          )
-                      ).map((size) => (
+                    {(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : (filterType === 'crypto' ? cryptoAccountSizes : accountSizes))).map((size) => (
                       <span key={size} className="font-medium">{formatAccountSize(size)}</span>
                     ))}
                   </div>
