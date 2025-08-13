@@ -140,7 +140,7 @@ export default function PricingCalculator() {
             
             <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
               Choose Your{' '}
-              <span className="bg-gradient-to-r from-brand-400 via-red-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-400 via-red-500 to-orange-400 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,64,64,0.35)]">
                 Challenge
               </span>
             </h2>

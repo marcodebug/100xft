@@ -155,7 +155,7 @@ export default function HowItWorksSection() {
                 </div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                   Ready to Start Your{' '}
-                  <span className="bg-gradient-to-r from-brand-400 to-red-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-red-400 via-red-500 to-orange-400 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,64,64,0.35)]">
                     Trading Journey?
                   </span>
                 </h3>
