@@ -4,7 +4,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { plans, accountSizes, futuresAccountSizes, formatAccountSize, isEarlyAccessActive, earlyAccess } from '@/data/plans';
+import { plans, accountSizes, futuresAccountSizes, instantAccountSizes, formatAccountSize, isEarlyAccessActive, earlyAccess } from '@/data/plans';
 import { AccountSize } from '@/types/plan';
 // Removed PreorderForm usage in favor of Stripe Checkout
 import ChallengeCard from './ChallengeCard';
@@ -18,15 +18,17 @@ export default function PricingCalculator() {
   const [comparingPlans, setComparingPlans] = useState<Set<string>>(new Set());
   const [viewMode, setViewMode] = useState<'grid' | 'comparison'>('grid');
   const [filterType, setFilterType] = useState<'fx' | 'crypto' | 'futures'>('fx');
+  const [mode, setMode] = useState<'challenges' | 'instant'>('challenges');
   const [orderOpen, setOrderOpen] = useState(false);
 
   // Ensure selected account size is valid when switching filters (futures has custom sizes)
   useEffect(() => {
-    const list = filterType === 'futures' ? futuresAccountSizes : accountSizes;
+    const baseList = filterType === 'futures' ? futuresAccountSizes : accountSizes;
+    const list = mode === 'instant' ? instantAccountSizes : baseList;
     if (!list.includes(selectedAccountSize)) {
       setSelectedAccountSize(list[0] as AccountSize);
     }
-  }, [filterType]);
+  }, [filterType, mode]);
 
   // Filter plans - Show instant card in Forex, also in Crypto and Futures per request
   const filteredPlans = useMemo(() => {
@@ -34,18 +36,10 @@ export default function PricingCalculator() {
     const cryptoPlans = plans.filter(p => p.id.includes('crypto'));
     const instantPlan = plans.filter(p => p.id === 'instant');
     const futuresPlans = plans.filter(p => p.id === 'futures');
-    
-    switch (filterType) {
-      case 'fx':
-        return [...fxPlans, ...instantPlan];
-      case 'crypto':
-        return [...cryptoPlans, ...instantPlan];
-      case 'futures':
-        return [...futuresPlans, ...instantPlan];
-      default:
-        return [...fxPlans, ...instantPlan];
-    }
-  }, [filterType]);
+
+    const byType = filterType === 'fx' ? fxPlans : filterType === 'crypto' ? cryptoPlans : futuresPlans;
+    return mode === 'instant' ? instantPlan : byType;
+  }, [filterType, mode]);
 
   const handleCompareToggle = () => {};
 
@@ -163,6 +157,28 @@ export default function PricingCalculator() {
             transition={{ delay: 0.3 }}
             className="space-y-8"
           >
+            {/* Mode Toggle */}
+            <div className="flex justify-center mb-6">
+              <div className="flex bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-1 shadow-2xl">
+                {[
+                  { id: 'challenges', name: 'Challenges' },
+                  { id: 'instant', name: 'Instant' },
+                ].map((m) => (
+                  <button
+                    key={m.id}
+                    onClick={() => setMode(m.id as any)}
+                    className={`relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                      mode === m.id
+                        ? 'bg-gradient-to-r from-brand-600 to-red-600 text-white shadow-lg shadow-brand-500/40 scale-105'
+                        : 'text-gray-300 hover:text-white hover:bg-white/10 hover:scale-102'
+                    }`}
+                  >
+                    {m.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Enhanced Filter Tabs */}
             <div className="flex justify-center">
               <div className="flex bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl">
@@ -222,16 +238,16 @@ export default function PricingCalculator() {
                   <input
                     type="range"
                     min={0}
-                    max={(filterType === 'futures' ? futuresAccountSizes : accountSizes).length - 1}
-                    value={(filterType === 'futures' ? futuresAccountSizes : accountSizes).indexOf(selectedAccountSize)}
+                    max={(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes)).length - 1}
+                    value={(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes)).indexOf(selectedAccountSize)}
                     onChange={(e) => {
-                      const list = filterType === 'futures' ? futuresAccountSizes : accountSizes;
+                      const list = mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes);
                       setSelectedAccountSize(list[parseInt(e.target.value)] as AccountSize);
                     }}
                     className="w-full h-3 bg-gray-800/50 rounded-lg appearance-none cursor-pointer slider-thumb"
                   />
                   <div className="flex justify-between text-xs text-gray-400">
-                    {(filterType === 'futures' ? futuresAccountSizes : accountSizes).map((size) => (
+                    {(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes)).map((size) => (
                       <span key={size} className="font-medium">{formatAccountSize(size)}</span>
                     ))}
                   </div>

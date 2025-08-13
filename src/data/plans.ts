@@ -347,6 +347,9 @@ export const accountSizes: AccountSize[] = [10000, 20000, 50000, 100000, 200000,
 // Futures uses a different set per user request
 export const futuresAccountSizes: AccountSize[] = [25000, 50000, 100000, 150000];
 
+// Instant accounts are limited to these sizes
+export const instantAccountSizes: AccountSize[] = [10000, 25000, 50000, 100000];
+
 export const formatAccountSize = (size: AccountSize): string => {
   return `$${(size / 1000)}K`;
 };
