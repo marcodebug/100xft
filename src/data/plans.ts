@@ -138,7 +138,7 @@ export const plans: Plan[] = [
         dailyCapLimit: 3,
         price: 125
       },
-      20000: {
+      25000: {
         profitTarget: 9,
         dailyLossLimit: 3,
         maxDrawdown: 6,
@@ -178,16 +178,7 @@ export const plans: Plan[] = [
         dailyCapLimit: 3,
         price: 1499
       },
-      400000: {
-        profitTarget: 9,
-        dailyLossLimit: 3,
-        maxDrawdown: 6,
-        inactivityDays: 30,
-        profitSplit: 90,
-        leverage: '5:1 BTC/ETH, 2:1 others',
-        dailyCapLimit: 3,
-        price: 2999
-      }
+      // 400k removed for crypto challenges per request
     }
   },
   {
@@ -205,7 +196,7 @@ export const plans: Plan[] = [
         dailyCapLimit: 3,
         price: 99
       },
-      20000: {
+      25000: {
         profitTarget: 6,
         dailyLossLimit: 3,
         maxDrawdown: 9,
@@ -245,16 +236,7 @@ export const plans: Plan[] = [
         dailyCapLimit: 3,
         price: 1299
       },
-      400000: {
-        profitTarget: 6,
-        dailyLossLimit: 3,
-        maxDrawdown: 9,
-        inactivityDays: 30,
-        profitSplit: 90,
-        leverage: '5:1 BTC/ETH, 2:1 others',
-        dailyCapLimit: 3,
-        price: 2599
-      }
+      // 400k removed for crypto challenges per request
     }
   },
   {
