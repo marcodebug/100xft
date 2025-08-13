@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
-import dynamic from "next/dynamic";
-const AnalyticsClient = dynamic(() => import("@/components/ClientAnalytics"), { ssr: false, loading: () => null });
 import "./globals.css";
 import "../../styles/sections.css";
 // LuxGradient removed - animations now built into NewHeroSection
 import StructuredData from "@/components/StructuredData";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Loading from "@/components/Loading";
+import AnalyticsWrapper from "@/components/AnalyticsWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -87,7 +86,7 @@ export default function RootLayout({
             {children}
           </Suspense>
         </ErrorBoundary>
-        <AnalyticsClient />
+        <AnalyticsWrapper />
       </body>
     </html>
   );
