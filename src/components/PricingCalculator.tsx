@@ -124,7 +124,8 @@ export default function PricingCalculator() {
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-red-700/8 via-brand-700/5 to-transparent rounded-full blur-3xl animate-pulse delay-500" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div id="challenges"></div>
+        <div id="pricing" className="scroll-mt-24 md:scroll-mt-32"></div>
+        <div id="challenges" className="scroll-mt-24 md:scroll-mt-32"></div>
         {/* Enhanced Header matching hero style */}
         <div className="text-center mb-20">
           <motion.div

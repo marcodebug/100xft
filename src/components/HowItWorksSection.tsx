@@ -209,6 +209,15 @@ export default function HowItWorksSection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full inline-block text-center bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 border border-green-400/40"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.querySelector('#pricing');
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                      window.location.hash = 'pricing';
+                    }
+                  }}
                 >
                   Get Early Access
                 </motion.a>
