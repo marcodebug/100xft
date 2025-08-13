@@ -23,7 +23,9 @@ export default function PricingCalculator() {
 
   // Ensure selected account size is valid when switching filters (futures has custom sizes)
   useEffect(() => {
-    const baseList = filterType === 'futures' ? futuresAccountSizes : accountSizes;
+    const baseList = (mode === 'challenges' && filterType === 'crypto')
+      ? ([200000] as AccountSize[])
+      : (filterType === 'futures' ? futuresAccountSizes : accountSizes);
     const list = mode === 'instant' ? instantAccountSizes : baseList;
     if (!list.includes(selectedAccountSize)) {
       setSelectedAccountSize(list[0] as AccountSize);
@@ -238,16 +240,38 @@ export default function PricingCalculator() {
                   <input
                     type="range"
                     min={0}
-                    max={(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes)).length - 1}
-                    value={(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes)).indexOf(selectedAccountSize)}
+                    max={(mode === 'instant' 
+                          ? instantAccountSizes 
+                          : (mode === 'challenges' && filterType === 'crypto' 
+                              ? ([200000] as AccountSize[]) 
+                              : (filterType === 'futures' ? futuresAccountSizes : accountSizes)
+                            )
+                        ).length - 1}
+                    value={(mode === 'instant' 
+                            ? instantAccountSizes 
+                            : (mode === 'challenges' && filterType === 'crypto' 
+                                ? ([200000] as AccountSize[]) 
+                                : (filterType === 'futures' ? futuresAccountSizes : accountSizes)
+                              )
+                          ).indexOf(selectedAccountSize)}
                     onChange={(e) => {
-                      const list = mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes);
+                      const list = mode === 'instant' 
+                        ? instantAccountSizes 
+                        : (mode === 'challenges' && filterType === 'crypto' 
+                            ? ([200000] as AccountSize[]) 
+                            : (filterType === 'futures' ? futuresAccountSizes : accountSizes));
                       setSelectedAccountSize(list[parseInt(e.target.value)] as AccountSize);
                     }}
                     className="w-full h-3 bg-gray-800/50 rounded-lg appearance-none cursor-pointer slider-thumb"
                   />
                   <div className="flex justify-between text-xs text-gray-400">
-                    {(mode === 'instant' ? instantAccountSizes : (filterType === 'futures' ? futuresAccountSizes : accountSizes)).map((size) => (
+                    {(mode === 'instant' 
+                        ? instantAccountSizes 
+                        : (mode === 'challenges' && filterType === 'crypto' 
+                            ? ([200000] as AccountSize[]) 
+                            : (filterType === 'futures' ? futuresAccountSizes : accountSizes)
+                          )
+                      ).map((size) => (
                       <span key={size} className="font-medium">{formatAccountSize(size)}</span>
                     ))}
                   </div>
