@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
-import ClientAnalytics from "@/components/ClientAnalytics";
+import dynamic from "next/dynamic";
+const AnalyticsClient = dynamic(() => import("@/components/ClientAnalytics"), { ssr: false, loading: () => null });
 import "./globals.css";
 import "../../styles/sections.css";
 // LuxGradient removed - animations now built into NewHeroSection
@@ -86,7 +87,7 @@ export default function RootLayout({
             {children}
           </Suspense>
         </ErrorBoundary>
-        <ClientAnalytics />
+        <AnalyticsClient />
       </body>
     </html>
   );
