@@ -4,7 +4,7 @@ const platforms = [
   { id: 'mt5', name: 'MetaTrader 5', logo: '/platforms/mt5.svg' },
   { id: 'ctrader', name: 'cTrader', logo: '/platforms/ctrader.svg' },
   { id: 'matchtrader', name: 'MatchTrader', logo: '/logos/logo7.svg' },
-  { id: 'tradelocker', name: 'TradeLocker', logo: '/logos/logo4.png' },
+  { id: 'tradelocker', name: 'TradeLocker', logo: '/logos/logo3.png' },
   { id: 'tradingview', name: 'TradingView', logo: '/logos/tradingview.svg' },
 ];
 
@@ -89,7 +89,7 @@ export default function PlatformsPage() {
         {/* TradeLocker */}
         <div className="bg-black/30 border border-white/10 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
-            <img src="/logos/logo4.png" alt="TradeLocker" className="h-6 w-6" />
+            <img src="/logos/logo3.png" alt="TradeLocker" className="h-6 w-6" />
             <h2 className="text-white font-semibold">TradeLocker</h2>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">
