@@ -28,7 +28,7 @@ export default function PlatformsPage() {
       </ul>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
         {platforms.map(p => (
-          <div key={p.id} className="bg-black/30 border border-white/10 rounded-xl p-4 flex items-center justify-center">
+          <div key={p.id} className="bg-white rounded-xl p-4 flex items-center justify-center border border-gray-200">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.logo} alt={p.name} className="h-10 w-auto object-contain" />
           </div>
