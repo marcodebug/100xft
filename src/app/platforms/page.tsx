@@ -41,7 +41,7 @@ export default function PlatformsPage() {
         <div className="bg-black/30 border border-white/10 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logos/logo8.svg" alt="MetaTrader 5" className="h-6 w-6" />
+            <img src="/platforms/mt5.svg" alt="MetaTrader 5" className="h-6 w-6" />
             <h2 className="text-white font-semibold">MetaTrader 5</h2>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">
@@ -58,7 +58,7 @@ export default function PlatformsPage() {
         {/* cTrader */}
         <div className="bg-black/30 border border-white/10 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
-            <img src="/logos/logo5.svg" alt="cTrader" className="h-6 w-6" />
+            <img src="/platforms/ctrader.svg" alt="cTrader" className="h-6 w-6" />
             <h2 className="text-white font-semibold">cTrader</h2>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">
