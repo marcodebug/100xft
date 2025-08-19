@@ -55,9 +55,9 @@ export default function ChallengeCard({
   };
 
   const getStepsBadge = () => {
-    const stepCount = plan.steps.length;
-    if (stepCount === 1) return { text: 'INSTANT', color: 'text-green-400' };
-    if (stepCount === 2) return { text: '1-PHASE', color: 'text-purple-400' };
+    if (plan.id === 'instant') return { text: 'INSTANT', color: 'text-green-400' };
+    if (plan.id === 'one-phase-fx' || plan.id === 'crypto-one') return { text: '1-PHASE', color: 'text-purple-400' };
+    if (plan.id === 'two-phase-fx' || plan.id === 'crypto-two' || plan.id === 'futures') return { text: '2-PHASE', color: 'text-blue-400' };
     return { text: '2-PHASE', color: 'text-blue-400' };
   };
 
@@ -152,26 +152,18 @@ export default function ChallengeCard({
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-brand-300 text-xs mb-0.5 font-medium">Challenge Price</div>
-                {discountActive ? (
-                  <div className="flex flex-col">
+                <div className="flex flex-col">
+                  {discountActive && (
                     <div className="text-gray-400 line-through text-xs">{formatPrice(basePrice)}</div>
-                    <div className="text-green-400 text-xl font-bold">
-                      <AnimatedNumber value={formatPrice(discountedPrice)} />
-                    </div>
+                  )}
+                  <div className="text-green-400 text-xl font-bold">
+                    <AnimatedNumber value={formatPrice(discountActive ? discountedPrice : basePrice)} />
                   </div>
-                ) : (
-                  <div className="text-brand-400 text-xl font-bold">
-                    <AnimatedNumber value={formatPrice(basePrice)} />
-                  </div>
-                )}
+                </div>
               </div>
               <div className="text-right">
                 <div className="text-gray-400 text-xs">One-time fee</div>
-                {discountActive ? (
-                  <div className="text-green-400 text-xs font-medium">Save {formatPrice(savings)} ({earlyAccess.discountPercent}%)</div>
-                ) : (
-                  <div className="text-green-400 text-xs font-medium">Refundable*</div>
-                )}
+                <div className="text-green-400 text-xs font-medium">Refundable*</div>
               </div>
             </div>
           </div>

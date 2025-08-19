@@ -280,8 +280,8 @@ export const plans: Plan[] = [
   },
   {
     id: 'futures',
-    label: 'Futures (4-Phase)',
-    steps: ['phase1', 'phase2', 'phase3', 'phase4', 'funded'],
+    label: 'Futures (2-Phase)',
+    steps: ['phase1', 'phase2', 'funded'],
     rules: {
       25000: {
         profitTarget: 9,

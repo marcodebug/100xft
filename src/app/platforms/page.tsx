@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 const platforms = [
-  { id: 'mt5', name: 'MetaTrader 5', logo: '/logos/logo8.svg' },
-  { id: 'ctrader', name: 'cTrader', logo: '/logos/logo5.svg' },
+  { id: 'mt5', name: 'MetaTrader 5', logo: '/platforms/mt5.svg' },
+  { id: 'ctrader', name: 'cTrader', logo: '/platforms/ctrader.svg' },
   { id: 'matchtrader', name: 'MatchTrader', logo: '/logos/logo7.svg' },
   { id: 'tradelocker', name: 'TradeLocker', logo: '/logos/logo4.png' },
   { id: 'tradingview', name: 'TradingView', logo: '/logos/tradingview.svg' },
