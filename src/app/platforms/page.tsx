@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 const platforms = [
   { id: 'mt5', name: 'MetaTrader 5', logo: '/platforms/mt5.svg' },
   { id: 'ctrader', name: 'cTrader', logo: '/platforms/ctrader.svg' },
-  { id: 'matchtrader', name: 'MatchTrader', logo: '/logos/logo7.svg' },
+  { id: 'matchtrader', name: 'MatchTrader', logo: '/logos/logo6.svg' },
   { id: 'tradelocker', name: 'TradeLocker', logo: '/logos/logo3.png' },
   { id: 'tradingview', name: 'TradingView', logo: '/logos/tradingview.svg' },
 ];
@@ -74,7 +74,7 @@ export default function PlatformsPage() {
         {/* MatchTrader */}
         <div className="bg-black/30 border border-white/10 rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
-            <img src="/logos/logo7.svg" alt="MatchTrader" className="h-6 w-6" />
+            <img src="/logos/logo6.svg" alt="MatchTrader" className="h-6 w-6" />
             <h2 className="text-white font-semibold">MatchTrader</h2>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">
